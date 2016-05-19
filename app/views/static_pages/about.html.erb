@@ -1,3 +1,15 @@
-<h1>About</h1>
-<p>RolePlay is an Orbital Project developed by Team『 』.</p>
-<p>The application aims to create a player interface for students and staff.</p>
+<% provide(:title, "About") %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %> | RolePlay</title>
+  </head>
+
+  <body>
+    <h1>About</h1>
+    <p>
+    RolePlay is an Orbital Project developed by Team『 』.</p>
+    <p>
+    The application aims to create a player interface for students and staff.</p>
+  </body>
+</html>
