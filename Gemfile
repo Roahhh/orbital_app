@@ -10,7 +10,7 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '~> 2.4'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-group :development, :test do
+group :development do
 	gem 'sqlite3', '1.3.11'
 	gem 'byebug', '9.0.3'
 	gem 'web-console', '~> 3.1'
