@@ -9,10 +9,13 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '~> 2.4'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-group :development, :test do
-	#gem 'sqlite3', '1.3.11'
-	gem 'byebug', '9.0.3'
+group :development do
 	gem 'web-console', '~> 3.1'
+end
+
+group :development, :test do
+	gem 'sqlite3', '1.3.11'
+	gem 'byebug', '9.0.3'
 	gem 'spring', '1.7.1'
 end
 
