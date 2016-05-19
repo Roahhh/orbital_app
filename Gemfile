@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.6'
 gem 'sass-rails',  '~> 5.0'
 gem 'uglifier', '3.0.0'
@@ -10,8 +9,8 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '~> 2.4'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-group :development do
-	gem 'sqlite3', '1.3.11'
+group :development, :test do
+	#gem 'sqlite3', '1.3.11'
 	gem 'byebug', '9.0.3'
 	gem 'web-console', '~> 3.1'
 	gem 'spring', '1.7.1'
@@ -28,5 +27,3 @@ group :production do
 	gem 'pg', '0.8.0'
 	gem 'rails_12factor', '0.0.3'
 end
-
-
