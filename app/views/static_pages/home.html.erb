@@ -4,5 +4,9 @@
 This is the home page for Team 『 』 Orbital web application.
 </p>
 
-<%= link_to "Log in now!", '#', class: "btn btn-lg btn-primary" %>
+<% if !logged_in? %>
+<%= link_to "Log in now!", login_path, class: "btn btn-lg btn-primary" %>
+<% end %>  
+
+
 </div>

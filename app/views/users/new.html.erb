@@ -24,6 +24,11 @@
       <%= f.label :password_confirmation, "Password Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+      <%= f.label :admin, class: "checkbox inline" do %>
+        <%= f.check_box :admin %>
+        <span>This user is a teacher</span>
+      <% end %>
+
       <%= f.submit "Create account", class: "btn btn-primary" %>
     <% end %>
   </div>

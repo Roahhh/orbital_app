@@ -1,1 +1,6 @@
-
+tester:
+  first_name: Example
+  last_name: User
+  identity_no: S9999999Z
+  email: exampleuser@example.com
+  password_digest: <%= User.digest('password') %>
