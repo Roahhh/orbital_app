@@ -1,12 +1,25 @@
 <% provide(:title, full_name(@user))%>
 
+
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow=  <%= exp_remain(@user).round(2).to_s %>
+  aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + exp_remain(@user).to_s + "%"%> >
+    
+     <font color ="black"><strong> <%= "Level: " + @user.lvl.to_s %> </strong>  - 
+     <%= exp_remain(@user).round(2).to_s + "%" + " ( " + exp_to_lvl(@user).round(2).to_s %> <em> more exp to level</em> ) </font>
+  </div>
+</div>
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
         <%= full_name(@user) %> <br>
-        <%= "Level: " + @user.lvl.to_s %>
+        <%= "Level: " + @user.lvl.to_s %> <br>
+        <%= "Exp: " + @user.exp.to_s %>
+
       </h1>
     </section>
   </aside>
