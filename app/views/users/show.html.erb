@@ -4,7 +4,7 @@
 
 <div class="progress">
   <div class="progress-bar" role="progressbar" aria-valuenow=  <%= exp_remain(@user).round(2).to_s %>
-  aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + exp_remain(@user).to_s + "%"%> >
+  aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + exp_remain(@user).to_s + "%"%> border-color = "black" >
     
      <font color ="black"><strong> <%= "Level: " + @user.lvl.to_s %> </strong>  - 
      <%= exp_remain(@user).round(2).to_s + "%" + " ( " + exp_to_lvl(@user).round(2).to_s %> <em> more exp to level</em> ) </font>
@@ -24,3 +24,79 @@
     </section>
   </aside>
 </div>
+
+<style>
+table, th, td {
+    border: 2px solid black;
+    height: 20px;
+    width: 500px;
+    text-align: center;
+    background-color: rgba(212, 190, 144, 0.8);
+    border-color: #4A4230;
+    color: black;
+    font-family: lucida calligraphy
+}
+th, td {
+  padding: 10px;
+}
+</style>
+
+
+<table>
+  <tbody>
+    <tr>
+      <th colspan="4">Character Profile</th>
+    </tr>
+
+    <tr>
+      <th>Name:</th>
+      <td colspan="3"><%= full_name(@user) %></td>
+    </tr>
+
+    <tr>
+      <th>Job:</th>
+      <td>Student</td>
+      <th>Level:</th>
+      <td><%= @user.lvl.to_s %></td>
+    </tr>
+
+    <tr>
+      <th>HP:</th>
+      <td>60</td>
+      <th>MP:</th>
+      <td>15</td>
+    </tr>
+
+    <tr>
+      <th>Strength:</th>
+      <td>15</td>
+      <th>Agility:</th>
+      <td>29</td>
+    </tr>
+
+    <tr>
+      <th>Vitality:</th>
+      <td>16</td>
+      <th>Intelligence</th>
+      <td>22</td>
+    </tr>
+
+    <tr>
+      <th>Magic:</th>
+      <td>42</td>
+      <th>Luck</th>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<table>
+  <tr>
+    <th colspan = "4">Achievements</th>
+  </tr>
+
+  <tr>
+    <th colspan="4"><br></th>
+  </tr>
+</table>

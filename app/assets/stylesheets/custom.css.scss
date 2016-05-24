@@ -221,3 +221,14 @@ input {
     text-align:center;
     font-weight: bold;
 }
+
+.progress {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) inset;
+  height: 30px;
+}
+
+.progress-bar {
+    line-height: 30px;
+    font-size: 20px;
+    background: rgba(75, 235, 12, 1)
+}
