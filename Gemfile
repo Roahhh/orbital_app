@@ -10,9 +10,12 @@ gem 'jquery-rails', '4.1.1'
 gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '~> 2.4'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'will_paginate', '~> 3.1'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 
 group :development do
 	gem 'web-console', '~> 3.1'
+	gem 'faker', '~> 1.6', '>= 1.6.3'
 end
 
 group :development, :test do
