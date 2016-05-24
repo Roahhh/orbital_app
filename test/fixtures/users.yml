@@ -4,3 +4,23 @@ tester:
   identity_no: S9999999Z
   email: exampleuser@example.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+  
+archer:
+  first_name: Sterling 
+  last_name: Archer
+  identity_no: S9999999A
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: false
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  first_name: User
+  last_name: <%= " #{n}" %>
+  identity_no: <%= "SXXXXXXX #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+  admin: false
+
+<% end %>
