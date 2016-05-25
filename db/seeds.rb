@@ -21,5 +21,6 @@ User.create!(first_name:  "Administrator",
   	           identity_no: identity_no,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               luck: rand(100))
 end

@@ -225,10 +225,23 @@ input {
 .progress {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) inset;
   height: 30px;
+  position: relative;
+
 }
 
 .progress-bar {
-    line-height: 30px;
     font-size: 20px;
-    background: rgba(75, 235, 12, 1)
+    min-width: 0.5%;
+    z-index: 1;
+    position: absolute;
+}
+
+.progress span {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    line-height: 30px;
+
 }

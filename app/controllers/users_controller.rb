@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy, :create]
 
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    params[:user][:luck] == rand(100)
     params[:user][:admin] == '1' ? @user.admin = true : @user.admin = false
 
     if @user.save
