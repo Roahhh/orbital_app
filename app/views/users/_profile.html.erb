@@ -40,8 +40,10 @@
     <th>Strength:</th>
     <td>
        <div class="alignleft"><%= @user.str.to_s %></div>
+       <% if current_user?(@user) %>
        <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_str", :id => @user.id }, :method => "patch", 
           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+       <% end %>
     </td>
   </tr>
 
@@ -49,8 +51,10 @@
     <th>Agility:</th>
     <td>
        <div class="alignleft"><%= @user.agi.to_s %></div>
+       <% if current_user?(@user) %>
        <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_agi", :id => @user.id }, :method => "patch", 
           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+       <% end %>
     </td>  
   </tr>
 
@@ -58,8 +62,10 @@
     <th>Vitality:</th>
     <td>
        <div class="alignleft"><%= @user.vit.to_s %></div>
+       <% if current_user?(@user) %>
        <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_vit", :id => @user.id }, :method => "patch", 
           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+       <% end %>
     </td>
   </tr>
 
@@ -67,8 +73,10 @@
     <th>Intelligence:</th>
     <td>
        <div class="alignleft"><%= @user.int.to_s %></div>
+       <% if current_user?(@user) %>
        <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_int", :id => @user.id }, :method => "patch", 
           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+       <% end %>
     </td>
   </tr>
 
