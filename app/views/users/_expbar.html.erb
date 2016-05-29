@@ -1,0 +1,9 @@
+<div class="progress">
+  <span>
+     <font color ="black"><strong> <%= "Level: " + @user.lvl.to_s %> </strong>  - 
+     <%= exp_remain(@user).round(2).to_s + "%" + " ( " + exp_to_lvl(@user).round(2).to_s %> <em> more exp to level</em> ) </font>
+  </span>
+  <div class="progress-bar" role="progressbar" aria-valuenow=  <%= exp_remain(@user).round(2).to_s %>
+  aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + exp_remain(@user).to_s + "%"%>>
+  </div>
+</div>

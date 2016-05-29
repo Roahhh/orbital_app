@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
 	validates :email, length: {maximum: 255}, 
 	           format: { with: VALID_EMAIL_REGEX },
 	           uniqueness: { case_sensitive: false }
-    validates :identity_no, length: {maximum: 20}, presence: true,
+  validates :identity_no, length: {maximum: 20}, presence: true,
 	           uniqueness: { case_sensitive: false }
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :sp, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
 
 	has_secure_password
 

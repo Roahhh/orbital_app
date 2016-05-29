@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525041729) do
+ActiveRecord::Schema.define(version: 20160529075145) do
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20160525041729) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 75
+    t.integer  "luck",            default: 95
     t.integer  "sp",              default: 3
+    t.integer  "curr_hp",         default: 100
+    t.integer  "curr_mp",         default: 30
   end
 
   add_index "users", ["identity_no"], name: "index_users_on_identity_no", unique: true

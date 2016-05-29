@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   resources :users
 
+  patch 'add_str' => 'users#add_str'
+  patch 'add_agi' => 'users#add_agi'
+  patch 'add_vit' => 'users#add_vit'
+  patch 'add_int' => 'users#add_int'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"

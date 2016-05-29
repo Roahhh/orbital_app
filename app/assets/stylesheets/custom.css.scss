@@ -226,7 +226,14 @@ input {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) inset;
   height: 30px;
   position: relative;
-
+  span {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    line-height: 30px;
+  }
 }
 
 .progress-bar {
@@ -236,12 +243,97 @@ input {
     position: absolute;
 }
 
-.progress span {
+#healthpoint {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) inset;
+  background-color: #000000;
+  height: 20px;
+  position: relative;
+  margin-bottom: 0px;
+  span {
     position: absolute;
     top: 0;
     z-index: 2;
-    text-align: center;
+    text-align: right;
     width: 100%;
-    line-height: 30px;
+    line-height: 20px;
+    padding-right: 5px;
+  }
+}
 
+#healthpoint-bar {
+    background:  #ff0000;
+    font-size: 16px;
+    min-width: 0.5%;
+    z-index: 1;
+    position: absolute;
+}
+
+#manapoint {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) inset;
+  background-color: #000000;
+  height: 20px;
+  position: relative;
+  margin-bottom: 0px;
+  span {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    text-align: right;
+    width: 100%;
+    line-height: 20px;
+    padding-right: 5px;
+  }
+}
+
+#manapoint-bar {
+    background:  #0000ff;
+    font-size: 16px;
+    min-width: 0.5%;
+    z-index: 1;
+    position: absolute;
+}
+
+/* Profile Page */
+#profiletable {
+
+  table, td, th {
+    background-color: #464545;
+    padding: 8px;
+    border: 1px solid black;
+
+  }
+
+  table {
+    width: 60%;
+    border: 3px solid black;
+  }
+  
+  td, th {
+    text-align: left;
+    font-family: "Lato","Helvetica Neue",Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    width: 20%;
+  }
+
+  th {
+    font-weight: bold;
+  }
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+#addbutton {
+  align: right;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }

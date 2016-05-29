@@ -1,0 +1,86 @@
+<div id="profiletable">
+<table border="2">
+  <tr>
+    <td rowspan="4">
+      <%= gravatar_for @user %>
+    </td> 
+    <th>Name:</th>
+    <td colspan ="3">
+      <%= full_name(@user) %>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Level:</th>
+    <td>  
+      <%= @user.lvl.to_s %>
+    </td>
+    <th>Job:</th>
+    <td>Student</td>
+  </tr>
+
+  <tr>
+    <th colspan="4">HP:<br>
+    <%= render 'hpbar' %>
+    </th>
+  </tr>
+
+  <tr>
+    <th colspan="4">MP:<br>
+    <%= render 'mpbar' %>
+    </th>
+  </tr>
+<br>
+  <tr>
+    <th colspan="2">STATS</th>
+    <th colspan="3">EQUIPMENT?</th>
+  </tr>
+
+  <tr>
+    <th>Strength:</th>
+    <td>
+       <div class="alignleft"><%= @user.str.to_s %></div>
+       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_str", :id => @user.id }, :method => "patch", 
+          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Agility:</th>
+    <td>
+       <div class="alignleft"><%= @user.agi.to_s %></div>
+       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_agi", :id => @user.id }, :method => "patch", 
+          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+    </td>  
+  </tr>
+
+  <tr>
+    <th>Vitality:</th>
+    <td>
+       <div class="alignleft"><%= @user.vit.to_s %></div>
+       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_vit", :id => @user.id }, :method => "patch", 
+          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Intelligence:</th>
+    <td>
+       <div class="alignleft"><%= @user.int.to_s %></div>
+       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_int", :id => @user.id }, :method => "patch", 
+          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Luck:</th>
+    <td><%= @user.luck.to_s %></td>
+  </tr>
+
+  <tr>
+    <th>Stat Points:</th>
+    <td><%= @user.sp.to_s %></td>
+  </tr>
+        
+</table>
+</div>

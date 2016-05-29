@@ -1,0 +1,9 @@
+<div class="progress" id="manapoint">
+  <span>
+     <font color ="white"><strong> <%= @user.curr_mp.to_s %> </strong>  /  
+     <%= @user.mp.to_s %></p></font>
+  </span>
+  <div class="progress-bar" id="manapoint-bar" role="manapointbar" aria-valuenow=  <%= mp_percent(@user).round(2).to_s %>
+  aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + mp_percent(@user).to_s + "%"%>>
+  </div>
+</div>

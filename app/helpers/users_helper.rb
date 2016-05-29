@@ -28,6 +28,14 @@ module UsersHelper
   	return exp_percent * 100
   end
 
+  def hp_percent(user)
+    return (user.curr_hp.to_f / user.hp.to_f) * 100
+  end
+
+  def mp_percent(user)
+    return (user.curr_mp.to_f / user.mp.to_f) * 100
+  end
+
   def add_exp(user, exp)
   	to_lvl_exp = exp_to_lvl(user)
   	if (exp < to_lvl_exp)
