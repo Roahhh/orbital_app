@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'start/index'
+
   get 'sessions/new'
 
   get 'users/new'
 
   get 'students/new'
+
+  get 'start' => 'start#index'
 
   root 'static_pages#home'
   get 'about' => 'static_pages#about'
