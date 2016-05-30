@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     params[:user][:admin] == '1' ? @user.admin = true : @user.admin = false
 
     if @user.save
-      log_in @user
-	    flash[:success] = "Welcome to the RolePlay!"
+	    flash[:success] = "New User, " + @user.first_name + " " + @user.last_name + " created!"
       redirect_to @user
     else
       render 'new'
