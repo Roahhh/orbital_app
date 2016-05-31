@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show, :add_str, :add_agi, :add_vit, :add_int]
-  before_action :correct_user,   only: [:edit, :update, :add_str, :add_agi, :add_vit, :add_int]
+  before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy, :create]
+
+  include UsersHelper
 
   def new
   	@user = User.new
@@ -48,49 +50,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def add_str
+  def add_exp
     @user = User.find(params[:id])
-    if @user.sp <= 0 
-      flash[:danger] = "Not enough SP!"
-      redirect_to @user
-    elsif @user.update_attributes(str: @user.str + 1, sp: @user.sp - 1)
-      flash[:success] = "Strength added!"
-      redirect_to @user
-    end
+    flash[:danger] = params[:exp].to_s
   end
 
-  def add_agi
-    @user = User.find(params[:id])
-    if @user.sp <= 0 
-      flash[:danger] = "Not enough SP!"
-      redirect_to @user
-    elsif @user.update_attributes(agi: @user.agi + 1, sp: @user.sp - 1)
-      flash[:success] = "Agility added!"
-      redirect_to @user
-    end
-  end
-
-  def add_vit
-    @user = User.find(params[:id])
-    if @user.sp <= 0 
-      flash[:danger] = "Not enough SP!"
-      redirect_to @user
-    elsif @user.update_attributes(vit: @user.vit + 1, hp: @user.hp + 50, sp: @user.sp - 1)
-      flash[:success] = "Vitality added!"
-      redirect_to @user
-    end
-  end
-
-  def add_int
-    @user = User.find(params[:id])
-    if @user.sp <= 0 
-      flash[:danger] = "Not enough SP!"
-      redirect_to @user
-    elsif @user.update_attributes(int: @user.int + 1, mp: @user.mp + 5, sp: @user.sp - 1)
-      flash[:success] = "Agility added!"
-      redirect_to @user
-    end
-  end  
 
   private
 

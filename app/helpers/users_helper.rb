@@ -1,4 +1,5 @@
 module UsersHelper
+  @@exp_mul = 1.15
 
   # Returns the Gravatar for the given user.
   def gravatar_for(user, options = { size: 80 })
@@ -12,39 +13,30 @@ module UsersHelper
   end
 
   def total_exp_level(user)
- 	  exp_mul = 1.15
   	lvl = user.lvl
-  	return (100 * (1 - exp_mul ** (lvl - 1)) / (1 - exp_mul))
+  	return (100 * (1 - @@exp_mul ** (lvl - 1)) / (1 - @@exp_mul))
   end
 
   def exp_to_lvl(user)
-  	next_lvl = 100 * (1.2 ** (user.lvl - 1))
+  	next_lvl = 100 * (@@exp_mul ** (user.lvl - 1))
   	return next_lvl - (user.exp - total_exp_level(user))
   end
 
-  def exp_remain(user)
-  	next_lvl = 100 * (1.2 ** (user.lvl - 1))
-  	exp_percent = (user.exp - total_exp_level(user)) / next_lvl 
-  	return exp_percent * 100
+  def exp_percent(user)
+  	next_lvl = 100 * (@@exp_mul ** (user.lvl - 1))
+  	exp_percent_now = (user.exp - total_exp_level(user)) / next_lvl 
+  	return exp_percent_now * 100
+  end
+
+  def total_stat(user, stat)
+    return user[stat] + user[stat + "_job"] + user[stat + "_eqp"]
   end
 
   def hp_percent(user)
-    return (user.curr_hp.to_f / user.hp.to_f) * 100
+    return (user.curr_hp.to_f / total_stat(user, "hp").to_f) * 100
   end
 
   def mp_percent(user)
-    return (user.curr_mp.to_f / user.mp.to_f) * 100
-  end
-
-  def add_exp(user, exp)
-  	to_lvl_exp = exp_to_lvl(user)
-  	if (exp < to_lvl_exp)
-  		user.exp += exp
-  		user.save
-  	else 
-  		user.exp += to_lvl_exp
-  		user.lvl += 1
-  		add_exp(user, exp - to_lvl_exp)
-  	end
+    return (user.curr_mp.to_f / total_stat(user, "mp").to_f) * 100
   end
 end
