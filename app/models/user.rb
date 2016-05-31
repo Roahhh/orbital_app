@@ -65,6 +65,24 @@ class User < ActiveRecord::Base
     end
   end
 
+  def att_value
+    if self.job == "Apprentice"
+      return self.str * 1.5
+    elsif self.job == "Warrior"
+      return self.str * 2.5 + self.agi * 0.5
+    elsif self.job == "Mage"
+      return self.int * 2.8 + self.luck * 0.2
+    elsif self.job == "Thief"
+      return self.agi * 2.5 + self.vit * 0.5
+    elsif self.job == "Monk"
+      return self.str * 1.5 + self.vit * 1.5
+    elsif self.job == "Magic_Knight"
+      return self.str * 2 + self.int * 2
+    elsif self.job == "Berserker"
+      return self.int + self.vit * 3
+    end
+  end
+
   #Since HP and MP are dependant on Vit and Int respective, individual methods are used to calculate the total HP and MP at every increase
   # HP = Vit * 10
   # MP = Int * 3
