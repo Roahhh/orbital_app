@@ -1,6 +1,6 @@
 class Users::AddStatsController < ApplicationController
     before_action :correct_user,   only: [:update]
-
+  # Note that this stats adding is for user to allocate their SP
 	def update
 		@user = User.find(params[:id])
 		if @user.sp <= 0 

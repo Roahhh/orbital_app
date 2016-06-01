@@ -65,21 +65,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  def total_stat(stat)
+    return self[stat] + self[stat + "_job"] + self[stat + "_eqp"]
+  end
+
   def att_value
     if self.job == "Apprentice"
       return self.str * 1.5
     elsif self.job == "Warrior"
-      return self.str * 2.5 + self.agi * 0.5
+      return self.total_stat("str") * 2.5 + self.total_stat("agi") * 0.5
     elsif self.job == "Mage"
-      return self.int * 2.8 + self.luck * 0.2
+      return self.total_stat("int") * 2.8 + self.total_stat("luck") * 0.2
     elsif self.job == "Thief"
-      return self.agi * 2.5 + self.vit * 0.5
+      return self.total_stat("agi") * 2.5 + self.total_stat("vit") * 0.5
     elsif self.job == "Monk"
-      return self.str * 1.5 + self.vit * 1.5
+      return self.total_stat("str") * 1.5 + self.total_stat("vit") * 1.5
     elsif self.job == "Magic_Knight"
-      return self.str * 2 + self.int * 2
+      return self.total_stat("str") * 2 + self.total_stat("int") * 2
     elsif self.job == "Berserker"
-      return self.int + self.vit * 3
+      return self.total_stat("int") + self.total_stat("vit") * 3
     end
   end
 
