@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show, :add_str, :add_agi, :add_vit, :add_int]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy, :create]
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page]).order('first_name ASC')
   end
   
   def show
@@ -49,12 +49,6 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
-  def add_exp
-    @user = User.find(params[:id])
-    flash[:danger] = params[:exp].to_s
-  end
-
 
   private
 

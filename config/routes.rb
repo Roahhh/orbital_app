@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  
   resources :users
+
+  resources :messages do
+    resources :comments
+  end
 
   scope module: 'users' do
     resources :add_stats, :add_exps

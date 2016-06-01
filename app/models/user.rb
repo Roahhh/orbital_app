@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :messages, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
 	attr_accessor :remember_token
   @@exp_mul = 1.15
 
