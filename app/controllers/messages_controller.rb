@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
-
-	before_action :find_msg, only: [:show, :edit, :update, :destroy] 
+	before_action :logged_in_user
+	before_action :find_msg, only: [:show, :edit, :update, :destroy]
+	before_action :find_user, only: [:show, :edit, :update, :destroy]
+	before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def index
 		@messages = Message.all.order("created_at DESC")
@@ -50,4 +52,21 @@ class MessagesController < ApplicationController
 	  def find_msg
 		@message = Message.find(params[:id])
 	  end
+
+	  def find_user
+	  	@user = User.find(@message.user_id)
+	  end
+
+	  def correct_user
+        @user = User.find(params[:id])
+        redirect_to(root_url) unless current_user?(@user) || current_user.admin?
+      end
+
+      def logged_in_user
+      	unless logged_in?
+      		store_location
+      		flash[:danger] = "Please log in."
+      		redirect_to login_url
+      	end
+      end
 end
