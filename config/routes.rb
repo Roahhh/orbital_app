@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'start' => 'start#index'
 
+  get 'town' => 'start#town'
+
   root 'static_pages#home'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  
+
   resources :users
 
   resources :messages do
@@ -27,6 +29,10 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     resources :add_stats, :add_exps
+  end
+
+  scope module: 'shops' do
+    resources :magic_shops   
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

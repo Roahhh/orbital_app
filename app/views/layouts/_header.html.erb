@@ -1,5 +1,27 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+    <%= link_to root_path do %>
+    <div id = "main-logo"> </div>
+    <% end %>
+
+    <% if logged_in? %>
+      <%= link_to start_path do %>
+      <div id = "map-icon"> </div>
+      <% end %>
+      <%= link_to "#" do %>
+      <div id = "inventory-icon"> </div>
+      <% end %>
+      <%= link_to "#" do %>
+      <div id = "switch-eq-icon"> </div>
+      <% end %>
+      <%= link_to "#" do %>
+      <div id = "money-icon"> </div>
+      <% end %>
+      <%= link_to "#" do %>
+      <div id = "castle-icon"> </div>
+      <% end %>
+    <% end %>
+
     <%= link_to "RolePlay", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
@@ -7,8 +29,9 @@
         
         <% if logged_in? %>
           <li><%= link_to "Users", users_path %></li>
-          <li><%= link_to "Game", '#' %></li>
+          <li><%= link_to "Game", start_path %></li>
           <li><%= link_to "Messages", messages_path %></li>
+          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>

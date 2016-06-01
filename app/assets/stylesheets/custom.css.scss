@@ -80,6 +80,158 @@ p {
   }
 }
 
+#main-logo{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('inner-self.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 2px;
+  top: 0;
+  z-index: 2;
+  &:hover{
+			opacity: 0.8;  	
+  	}
+
+}
+
+#map-icon{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('treasure-map-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 20%;
+  top: 0;
+  z-index: 2;
+
+  	&:hover{
+			opacity: 0.8;  	
+
+  	}
+
+}
+
+#inventory-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('knapsack.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 25%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+#switch-eq-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('switch-weapon-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 30%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+#money-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('cash-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 35%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+#castle-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('castle-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 40%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+#castle-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('castle-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 40%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+
 /* footer */
 
 footer {
@@ -338,18 +490,194 @@ input {
     cursor: not-allowed;
 }
 
-/* Maps */
+/* Maps & Icons*/
 
 #map-container {
   padding: 0;
   margin: 0;
   background-image: url(image_path('ValciaMap.jpg'));
   background-repeat:no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   background-color: rgba(0,0,0,0.25);
   width: 1000px;
   margin: 0 auto;
-  height: 700px;
+  height: 563px;
   position: relative;
+  z-index: 1;
   
 }
+
+#town-container {
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('ValciaMap.jpg'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: #ffffff;
+  width: 1000px;
+  margin: 0 auto;
+  height: 563px;
+  position: relative;
+  z-index: 1;
+  
+}
+
+#shop-magic{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('burning-book.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0.25);
+  width: 80px;
+  margin: 0 auto;
+  height: 80px;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 2; 
+  -moz-border-radius: 10px;
+	border-radius:10px;
+	border: 2px solid #ffffff;
+
+
+	span{
+	 position: absolute;
+   bottom: 0;
+   right: 0;
+	}
+	&:hover{
+		//-moz-border-radius: 35px;
+		//border-radius: 35px;
+		//border: 2px solid #ffffff;
+		background-image: url(image_path('juggler.png'));
+	}
+
+}
+
+#shop-item{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('drink-me.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0.25);
+  width: 80px;
+  margin: 0 auto;
+  height: 80px;
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  z-index: 2; 
+  -moz-border-radius: 10px;
+	border-radius:10px;
+	border: 2px solid #ffffff;
+
+
+	span{
+	 position: absolute;
+   bottom: 0;
+   right: 0;
+	}
+	&:hover{
+		background-image: url(image_path('enter-door.png'));
+
+	}
+
+}
+
+#shop-equipment{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('battle-gear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0.25);
+  width: 80px;
+  margin: 0 auto;
+  height: 80px;
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  z-index: 2; 
+  -moz-border-radius: 10px;
+	border-radius:10px;
+	border: 2px solid #ffffff;
+
+
+	span{
+	 position: absolute;
+   bottom: 0;
+   right: 0;
+	}
+	&:hover{
+		background-image: url(image_path('enter-door.png'));
+
+	}
+
+}
+
+#wishing-well{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0.25);
+  width: 80px;
+  margin: 0 auto;
+  height: 80px;
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  z-index: 2; 
+  -moz-border-radius: 10px;
+	border-radius:10px;
+	border: 2px solid #ffffff;
+
+
+	span{
+		display: none;
+		/* use to display links in html */
+	}
+	&:hover{
+		//-moz-border-radius: 35px;
+		//border-radius: 35px;
+		//border: 2px solid #ffffff;
+		background-image: url(image_path('prayer.png'));
+	}
+
+}
+
+#castle{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('castle.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0.25);
+  width: 100px;
+  margin: 0 auto;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  z-index: 2; 
+  -moz-border-radius: 10px;
+	border-radius:10px;
+	border: 2px solid #ffffff;
+
+
+	span{
+		display: none;
+		/* use to display links in html */
+	}
+	&:hover{
+		//-moz-border-radius: 35px;
+		//border-radius: 35px;
+		//border: 2px solid #ffffff;
+		background-image: url(image_path('enter-door.png'));
+	}
+
+}
+
