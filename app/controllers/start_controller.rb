@@ -6,6 +6,9 @@ class StartController < ApplicationController
   def index
   end
 
+  def town
+  end
+
   def logged_in_user
       unless logged_in?
         store_location

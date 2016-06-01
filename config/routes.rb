@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'start/index'
 
+  get 'start/town'
+
   get 'sessions/new'
 
   get 'users/new'
