@@ -1,7 +1,7 @@
 <div class="progress" id="healthpoint">
   <span>
      <font color ="white"><strong> <%= @user.curr_hp.to_s %> </strong>  /  
-     <%= @user.hp.to_s %></p></font>
+     <%= total_stat(@user, "hp").to_s %></p></font>
   </span>
   <div class="progress-bar" id="healthpoint-bar" role="healthpointbar" aria-valuenow=  <%= hp_percent(@user).round(2).to_s %>
   aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + hp_percent(@user).to_s + "%"%>>

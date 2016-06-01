@@ -16,7 +16,9 @@
       <%= @user.lvl.to_s %>
     </td>
     <th>Job:</th>
-    <td>Student</td>
+    <td>
+      <%= @user.job.titleize %>
+    </td>
   </tr>
 
   <tr>
@@ -39,10 +41,11 @@
   <tr>
     <th>Strength:</th>
     <td>
-       <div class="alignleft"><%= @user.str.to_s %></div>
+       <div class="alignleft"><%= total_stat(@user, "str").to_s %></div>
        <% if current_user?(@user) %>
-       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_str", :id => @user.id }, :method => "patch", 
-          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+         <div class="alignright">
+           <%= link_to '+', add_stat_path(:id => @user.id, :stat => "str"), method: :patch, 
+           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
   </tr>
@@ -50,10 +53,11 @@
   <tr>
     <th>Agility:</th>
     <td>
-       <div class="alignleft"><%= @user.agi.to_s %></div>
+       <div class="alignleft"><%= total_stat(@user, "agi").to_s %></div>
        <% if current_user?(@user) %>
-       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_agi", :id => @user.id }, :method => "patch", 
-          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+         <div class="alignright">
+           <%= link_to '+', add_stat_path(:id => @user.id, :stat => "agi"), method: :patch, 
+           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>  
   </tr>
@@ -61,10 +65,11 @@
   <tr>
     <th>Vitality:</th>
     <td>
-       <div class="alignleft"><%= @user.vit.to_s %></div>
+       <div class="alignleft"><%= total_stat(@user, "vit").to_s %></div>
        <% if current_user?(@user) %>
-       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_vit", :id => @user.id }, :method => "patch", 
-          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+         <div class="alignright">
+           <%= link_to '+', add_stat_path(:id => @user.id, :stat => "vit"), method: :patch, 
+           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
   </tr>
@@ -72,10 +77,11 @@
   <tr>
     <th>Intelligence:</th>
     <td>
-       <div class="alignleft"><%= @user.int.to_s %></div>
+       <div class="alignleft"><%= total_stat(@user, "int").to_s %></div>
        <% if current_user?(@user) %>
-       <div class="alignright"><%= link_to '+', {:controller => "users", :action => "add_int", :id => @user.id }, :method => "patch", 
-          class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
+         <div class="alignright">
+           <%= link_to '+', add_stat_path(:id => @user.id, :stat => "int"), method: :patch, 
+           class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
   </tr>
@@ -87,7 +93,13 @@
 
   <tr>
     <th>Stat Points:</th>
-    <td><%= @user.sp.to_s %></td>
+    <td><%= @user.sp.to_s %>
+    <% if current_user?(@user) %>
+         <div class="alignright">
+           <%= link_to 'Level up', add_exp_path(:id => @user.id, :exp_add => "50"), method: :patch, 
+           class: "btn btn-warning btn-xs" %></div>
+    <% end %>
+    </td>
   </tr>
         
 </table>
