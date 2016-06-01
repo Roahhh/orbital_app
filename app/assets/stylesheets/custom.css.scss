@@ -80,6 +80,158 @@ p {
   }
 }
 
+#main-logo{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('inner-self.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 2px;
+  top: 0;
+  z-index: 2;
+  &:hover{
+			opacity: 0.8;  	
+  	}
+
+}
+
+#map-icon{
+	padding: 0;
+  margin: 0;
+  background-image: url(image_path('treasure-map-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 20%;
+  top: 0;
+  z-index: 2;
+
+  	&:hover{
+			opacity: 0.8;  	
+
+  	}
+
+}
+
+#inventory-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('knapsack.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 25%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+#switch-eq-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('switch-weapon-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 30%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+#money-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('cash-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 35%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+#castle-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('castle-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 40%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+#castle-icon{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('castle-clear.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  left: 40%;
+  top: 0;
+  z-index: 2;
+
+    &:hover{
+      opacity: 0.8;   
+
+    }
+
+}
+
+
 /* footer */
 
 footer {
@@ -529,23 +681,3 @@ input {
 
 }
 
-#main-logo{
-  padding: 0;
-  margin: 0;
-  background-image: url(image_path('inner-self.png'));
-  background-repeat:no-repeat;
-  background-size: 100% 100%;
-  //background-color: rgba(0,0,0,0.25);
-  width: 50px;
-  margin: 0 auto;
-  height: 50px;
-  position: absolute;
-  opacity: 0.9;
-  left: 0;
-  top: 0;
-  z-index: 2;
-
-
-
-
-}
