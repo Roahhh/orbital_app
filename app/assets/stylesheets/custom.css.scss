@@ -390,8 +390,9 @@ input {
 
 
 	span{
-		display: none;
-		/* use to display links in html */
+	 position: absolute;
+   bottom: 0;
+   right: 0;
 	}
 	&:hover{
 		//-moz-border-radius: 35px;
@@ -422,8 +423,9 @@ input {
 
 
 	span{
-		display: none;
-		/* use to display links in html */
+	 position: absolute;
+   bottom: 0;
+   right: 0;
 	}
 	&:hover{
 		background-image: url(image_path('enter-door.png'));
@@ -452,8 +454,9 @@ input {
 
 
 	span{
-		display: none;
-		/* use to display links in html */
+	 position: absolute;
+   bottom: 0;
+   right: 0;
 	}
 	&:hover{
 		background-image: url(image_path('enter-door.png'));
@@ -523,5 +526,26 @@ input {
 		//border: 2px solid #ffffff;
 		background-image: url(image_path('enter-door.png'));
 	}
+
+}
+
+#main-logo{
+  padding: 0;
+  margin: 0;
+  background-image: url(image_path('inner-self.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  //background-color: rgba(0,0,0,0.25);
+  width: 50px;
+  margin: 0 auto;
+  height: 50px;
+  position: absolute;
+  opacity: 0.9;
+  left: 0;
+  top: 0;
+  z-index: 2;
+
+
+
 
 }
