@@ -24,3 +24,20 @@ User.create!(first_name:  "Administrator",
                password_confirmation: password,
                luck: rand(100))
 end
+
+100.times do |n|
+  title = Faker::Lorem.sentence
+  description = Faker::Lorem.paragraphs
+
+  Message.create!(title: title,
+                  description: description,
+                  user_id: rand(99) + 1)
+end
+
+100.times do |n|
+  content = Faker::Lorem.sentence
+
+  Comment.create!(content: content,
+                  message_id: rand(99) + 1,
+                  user_id: rand(99) + 1)
+end

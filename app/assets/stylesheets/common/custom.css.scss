@@ -219,6 +219,11 @@ p {
 /* footer */
 
 footer {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 60px;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;

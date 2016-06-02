@@ -1,23 +1,33 @@
 <% provide(:title, 'Message: ' + @message.title) %>
 
-<h2><%= @message.title %></h2>
-<p>Posted by <%= full_name(@message.user) %> <%= time_ago_in_words(@message.created_at) %> ago </p>
-<p><%= @message.description %></p>
+<div class="col-md-8 col-md-offset-2">
+  <div class="message-show">
 
-<% if @message.comments.count == 0 %>
-  <h3>Be the first to comment on this message!</h3>
-<% else %>
-  <h3>Comments:</h3>
-  <%= render @message.comments %>
-<% end %>
+    <h2><strong><%= @message.title %></strong></h2>
+    <p class="message-desc"><%= @message.description %></p>
+    <p class="message-posted-by" style="text-align:right">Posted by <%= full_name(@message.user) %> <%= time_ago_in_words(@message.created_at) %> ago </p>
 
-<h3>Reply to Message:</h3>
-<%= render 'comments/form' %>
-  <% if logged_in? %>
-    <% if current_user?(User.find(@message.user_id)) %>
-    <%= link_to 'Edit Message', edit_message_path(@message), class: 'btn btn-default' %>
-    <%= link_to 'Delete Message', @message, method: :delete,
-                                            data: { confirm: "Are you sure that you want to delete this message?" },
-                                            class: 'btn btn-default' %>
-  <% end %>
-<% end %>
+    <h3 class="comment-section-header">Comments:</h3><br>
+
+    <% if @message.comments.count == 0 %>
+      <h4 class="comment-section-header">Be the first to comment on this message!</h4>
+    <% else %>
+      <%= render @message.comments %>
+    <% end %>
+
+<br><br>
+
+    <h3 class="reply-to-msg">Reply to Message:</h3>
+    <%= render 'comments/form' %>
+      <div class="links btn-group">
+        <% if logged_in? %>
+          <% if current_user?(User.find(@message.user_id)) || current_user.admin? %>
+          <%= link_to 'Edit Message', edit_message_path(@message), class: 'btn btn-default' %>
+          <%= link_to 'Delete Message', @message, method: :delete,
+                                                  data: { confirm: "Are you sure that you want to delete this message?" },
+                                                  class: 'btn btn-default' %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+</div>
