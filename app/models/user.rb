@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
+  
+  has_many :quest_assignments
+  has_many :quests, :through => :quest_assignments
 
 	attr_accessor :remember_token
   @@exp_mul = 1.15
@@ -50,6 +53,10 @@ class User < ActiveRecord::Base
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+
+  def full_name
+    return self.first_name + " " + self.last_name
+  end 
 
 # ---------------------------------------------------------------------------------------------------
 # The following methods are for Stats calculation

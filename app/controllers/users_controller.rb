@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @quests = @user.quests.paginate(page: params[:page])
+    @createdquests = Quest.where(user_id: params[:id])
   end
 
   def create
@@ -56,30 +58,5 @@ class UsersController < ApplicationController
       params.require(:user).permit(:identity_no, :first_name, :last_name,
                                    :email, :password,
                                    :password_confirmation)
-    end
-    
-    # Before filters
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-    
-    # Confirms the correct user.
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
-    end
-
-    def only_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
     end
 end

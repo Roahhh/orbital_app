@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  title: MyString
+  description: MyString
+  deadline: 2016-06-06 16:40:49
+  completed: false
+  creator_id: 1
+  user_id: 
+
+two:
+  type: 
+  title: MyString
+  description: MyString
+  deadline: 2016-06-06 16:40:49
+  completed: false
+  creator_id: 1
+  user_id: 

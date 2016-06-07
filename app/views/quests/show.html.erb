@@ -1,0 +1,23 @@
+<% provide(:title, 'Quest') %>
+<h1>Details of Quest</h1>
+
+<h3>Quest title:</h3>
+<h4><%= @quest.title %></h4>
+
+<h3>Quest Description:</h3>
+<h4><%= @quest.description %></h4>
+
+<h3>Users with this quest:</h3>
+
+<ol>
+	<% @users.each do |user_id| %>
+		<% user = User.find(user_id) %>
+		<%= link_to user.first_name + " " + user.last_name, user %>
+		<% if QuestAssignment.find_by(user_id: user_id).completed %>
+			(Completed)
+		<% else %>
+			| <%= link_to "Mark as Complete",  mark_complete_quest_path(:user_id => user_id, :quest_id => @quest.id), method: :patch %>
+		<% end %>
+		<br>
+	<% end %>
+</ol>

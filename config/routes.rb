@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :quests
+
   resources :messages do
     resources :comments
   end
@@ -33,6 +35,10 @@ Rails.application.routes.draw do
 
   scope module: 'shops' do
     resources :magic_shops   
+  end
+
+  scope module: 'quests' do
+    resources :mark_complete_quests
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

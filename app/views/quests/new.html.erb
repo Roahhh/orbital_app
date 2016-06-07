@@ -1,0 +1,16 @@
+<% provide(:title, 'Create New Quest') %>
+
+<h1>Create New Quest</h1>
+
+<%= simple_form_for @quest do |f| %>
+  <%= render 'shared/error_messages_fq' %>
+  <%= f.input :quest_type, label: "Quest Type", :collection =>  %w[Assignment Event] %>
+  <%= f.input :title, label: "Quest Title" %>
+  <%= f.input :description %>
+  <%= f.input :deadline, :as => :effective_date_time_picker %>
+  Select the students for this quest:
+  <%= collection_check_boxes(:quest_assignment, :user_id, 
+                       User.all, 
+                       :id, :full_name, {:include_blank => true}, {:multiple => true, :size => 10}) %>
+  <%= f.button :submit %>
+<% end %>

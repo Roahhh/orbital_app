@@ -16,3 +16,36 @@
 </table>
 
 <br>
+
+
+
+<div class="col-md-8">
+	<% if current_user.admin? && current_user?(@user) %>
+		<h3>Quests Created  (<%= @createdquests.count %>)</h3>
+		<ol class="quests">
+			<% @createdquests.each do |quest|%>
+				<span class="title"><%= quest.title %></span>
+				<span class="content"><%= quest.description %></span>
+				<% if quest.deadline > Time.now %>
+					<span class="timestamp">
+					Quest due in <%= distance_of_time_in_words(Time.now, quest.deadline) %>.	
+					</span>
+				<% else %>
+					<span class="timestamp">
+					Quest was due <%= time_ago_in_words(quest.deadline) %> ago.
+					</span>
+				<% end %>
+				<%= link_to "View members and update complete status", quest %>
+				<br>
+			<% end %>
+		</ol>
+	<% end %>
+
+	<% if @user.quests.any? %>
+		<h3>Quests (<%= @user.quests.count %>)</h3>
+		<ol class="quests">
+			<%= render @quests %>
+		</ol>
+		<%= will_paginate @quests %>
+	<% end %>
+</div>

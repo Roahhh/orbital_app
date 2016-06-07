@@ -1,0 +1,17 @@
+<li>
+	<span class="title"><%= quest.title %></span>
+	<span class="content"><%= quest.description %></span>
+	<% if QuestAssignment.find_by(quest_id: quest.id, user_id: @user.id).completed %>
+		<span class="timestamp">
+		Quest Completed!	
+		</span> 
+	<% elsif quest.deadline > Time.now %>
+		<span class="timestamp">
+		Quest due in <%= distance_of_time_in_words(Time.now, quest.deadline) %>.	
+		</span>
+	<% else %>
+		<span class="timestamp">
+		Quest was due <%= time_ago_in_words(quest.deadline) %> ago.
+		</span>
+	<% end %>
+</li>

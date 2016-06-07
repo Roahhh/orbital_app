@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601101926) do
+ActiveRecord::Schema.define(version: 20160607153824) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +32,28 @@ ActiveRecord::Schema.define(version: 20160601101926) do
     t.integer  "user_id"
   end
 
+  create_table "quest_assignments", force: :cascade do |t|
+    t.boolean  "completed",  default: false
+    t.integer  "quest_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string   "quest_type"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "deadline"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "quests", ["created_at"], name: "index_quests_on_creator_id_and_created_at"
+  add_index "quests", ["user_id", "created_at"], name: "index_quests_on_user_id_and_created_at"
+  add_index "quests", ["user_id"], name: "index_quests_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -50,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160601101926) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 65
+    t.integer  "luck",            default: 34
     t.integer  "sp",              default: 3
     t.integer  "curr_hp",         default: 100
     t.integer  "curr_mp",         default: 30
