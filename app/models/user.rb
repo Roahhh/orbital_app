@@ -201,5 +201,10 @@ class User < ActiveRecord::Base
   end
 
 # ---------------------------------------------------------------------------------------------------
-
+# -------- methods for rolling luck for wishing well --------------------------------------
+  def roll_luck
+    self.luck = rand(100)
+    #self.gold -= 100
+    self.save
+  end  
 end

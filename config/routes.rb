@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'wishing_well/index'
+
+  get 'wishing_well/wish'
+
   get 'start/index'
 
   get 'start/town'
@@ -28,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'users' do
-    resources :add_stats, :add_exps
+    resources :add_stats, :add_exps, :roll_luck
   end
 
   scope module: 'shops' do
