@@ -28,7 +28,7 @@ class QuestsController < ApplicationController
 
 	def show
 		@quest = Quest.find(params[:id])
-		@users =  QuestAssignment.where(quest_id: params[:id])
+		@questassignments =  QuestAssignment.where(quest_id: params[:id])
 	end
 
 	private
