@@ -7,23 +7,42 @@ User.create!(first_name:  "Administrator",
              email: "admin1@roleplay.org",
              password:              "foobar",
              password_confirmation: "foobar",
-             admin: true)
+             admin: true,
+             class_no: 0,
+             year: 0,
+             clan: "Neutral",
+             title: "Administrator")
 
-99.times do |n|
+100.times do |n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   identity_no = "S" + Faker::PhoneNumber.subscriber_number(8).to_s + ('A'..'Z').to_a.sample
   email = "example-#{n+1}@roleplay.org"
   password = "password"
+  class_no = n % 4 + 1
+  clan_name = class_no == 1 ? "Zeus" : 
+              class_no == 2 ? "Odin" :
+              class_no == 3 ? "Dias" :
+              class_no == 4 ? "Ares" :
+              "Neutral"
 
   User.create!(first_name:  first_name,
-  	           last_name: last_name,
-  	           identity_no: identity_no,
+               last_name: last_name,
+               identity_no: identity_no,
                email: email,
                password:              password,
                password_confirmation: password,
-               luck: rand(100))
+               luck: rand(100),
+               class_no: class_no,
+               year: 2016,
+               clan: clan_name)
 end
+
+Town.create!(name: "Zeus")
+Town.create!(name: "Odin")
+Town.create!(name: "Dias")
+Town.create!(name: "Ares")
+
 
 100.times do |n|
   title = Faker::Lorem.sentence

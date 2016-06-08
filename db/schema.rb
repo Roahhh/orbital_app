@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607153824) do
+ActiveRecord::Schema.define(version: 20160608085055) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -23,6 +23,23 @@ ActiveRecord::Schema.define(version: 20160607153824) do
 
   add_index "comments", ["message_id"], name: "index_comments_on_message_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "items", force: :cascade do |t|
+    t.string   "type"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "lvl",         default: 1
+    t.integer  "hp",          default: 0
+    t.integer  "mp",          default: 0
+    t.integer  "str",         default: 0
+    t.integer  "agi",         default: 0
+    t.integer  "vit",         default: 0
+    t.integer  "int",         default: 0
+    t.integer  "rec_hp",      default: 0
+    t.integer  "rec_mp",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string   "title"
@@ -54,6 +71,18 @@ ActiveRecord::Schema.define(version: 20160607153824) do
   add_index "quests", ["user_id", "created_at"], name: "index_quests_on_user_id_and_created_at"
   add_index "quests", ["user_id"], name: "index_quests_on_user_id"
 
+  create_table "towns", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "item_lvl",   default: 1
+    t.integer  "item_exp",   default: 0
+    t.integer  "eqp_lvl",    default: 1
+    t.integer  "eqp_exp",    default: 0
+    t.integer  "castle_lvl", default: 1
+    t.integer  "castle_exp", default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -72,7 +101,7 @@ ActiveRecord::Schema.define(version: 20160607153824) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 34
+    t.integer  "luck",            default: 79
     t.integer  "sp",              default: 3
     t.integer  "curr_hp",         default: 100
     t.integer  "curr_mp",         default: 30
@@ -90,6 +119,15 @@ ActiveRecord::Schema.define(version: 20160607153824) do
     t.integer  "int_eqp",         default: 0
     t.string   "job",             default: "Apprentice"
     t.string   "clan",            default: "Neutral"
+    t.string   "title"
+    t.integer  "class_no"
+    t.integer  "year"
+    t.integer  "resource_pts",    default: 0
+    t.integer  "gold_pts",        default: 0
+    t.string   "eqp_head"
+    t.string   "eqp_body"
+    t.string   "eqp_boots"
+    t.string   "eqp_wpn"
   end
 
   add_index "users", ["identity_no"], name: "index_users_on_identity_no", unique: true
