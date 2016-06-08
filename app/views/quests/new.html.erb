@@ -8,9 +8,11 @@
   <%= f.input :title, label: "Quest Title" %>
   <%= f.input :description %>
   <%= f.input :deadline, :as => :effective_date_time_picker %>
-  Select the students for this quest:
-  <%= collection_check_boxes(:quest_assignment, :user_id, 
-                       User.all, 
-                       :id, :full_name, {:include_blank => true}, {:multiple => true, :size => 10}) %>
+  Select the students for this quest: <br>
+  <%= collection_check_boxes(:quest_assignment, :user_id, User.all.order(:class_no, :first_name, :last_name), :id, :full_name, {:include_blank => true}, {:multiple => true, :size => 10})  do |b|%>
+    <%= b.check_box  +  b.label {b.text} %>
+    <br>
+  <% end %>
+
   <%= f.button :submit %>
 <% end %>

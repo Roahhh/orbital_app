@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    return self.first_name + " " + self.last_name
+    return "Class " + self.class_no.to_s + " | " + self.identity_no + " | " + self.first_name + " " + self.last_name
   end 
 
 # ---------------------------------------------------------------------------------------------------
