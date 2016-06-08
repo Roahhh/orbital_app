@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  item_lvl: 1
+  item_exp: 1
+  eqp_lvl: 1
+  eqp_exp: 1
+  castle_lvl: 1
+  castle_exp: 1
+
+two:
+  name: MyString
+  item_lvl: 1
+  item_exp: 1
+  eqp_lvl: 1
+  eqp_exp: 1
+  castle_lvl: 1
+  castle_exp: 1

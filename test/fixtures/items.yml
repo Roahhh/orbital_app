@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  description: MyString
+  lvl: 1
+  hp: 1
+  mp: 1
+  str: 1
+  agi: 1
+  vit: 1
+  int: 1
+  rec_hp: 1
+  rec_mp: 1
+
+two:
+  type: 
+  name: MyString
+  description: MyString
+  lvl: 1
+  hp: 1
+  mp: 1
+  str: 1
+  agi: 1
+  vit: 1
+  int: 1
+  rec_hp: 1
+  rec_mp: 1
