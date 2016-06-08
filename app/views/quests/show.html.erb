@@ -16,8 +16,8 @@
 		<% if QuestAssignment.find_by(user_id: questassignment.user_id, quest_id: @quest.id).completed %>
 			(Completed)
 		<% else %>
-			| <%= link_to "Mark as Complete",  mark_complete_quest_path(:user_id => questassignment.user_id, :quest_id => @quest.id), method: :patch 
-			      data: { confirm: "Please confirm that " + full_name(user) + " has completed the quest."%>
+			| <%= link_to "Mark as Complete",  mark_complete_quest_path(:user_id => questassignment.user_id, :quest_id => @quest.id), method: :patch, 
+			      data: { confirm: "Please confirm that " + full_name(user) + " has completed the quest."}%>
 		<% end %>
 		<br>
 	<% end %>
