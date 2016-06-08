@@ -1,4 +1,4 @@
-class WishingWellController < ApplicationController
+class Castletowns::WishingWellsController < ApplicationController
 	before_action :logged_in_user, only: [:index, :wish]
 
   def index

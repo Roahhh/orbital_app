@@ -1,4 +1,4 @@
-class StartController < ApplicationController
+class Maps::StartsController < ApplicationController
 	before_action :logged_in_user, only: [:index, :town]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy, :create]
