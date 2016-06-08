@@ -1,4 +1,4 @@
-class Users::RollLuckController < ApplicationController
+class Users::RollLucksController < ApplicationController
     before_action :correct_user,   only: [:update]
 
     def update

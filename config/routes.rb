@@ -1,21 +1,12 @@
 Rails.application.routes.draw do
-  get 'wishing_well/index'
 
-  get 'wishing_well/wish'
-
-  get 'start/index'
-
-  get 'start/town'
+  get 'castletowns/wishing_wells/wish'
 
   get 'sessions/new'
 
   get 'users/new'
 
   get 'students/new'
-
-  get 'start' => 'start#index'
-
-  get 'town' => 'start#town'
 
   root 'static_pages#home'
   get 'about' => 'static_pages#about'
@@ -32,11 +23,15 @@ Rails.application.routes.draw do
   end
 
   scope module: 'users' do
-    resources :add_stats, :add_exps, :roll_luck
+    resources :add_stats, :add_exps, :roll_lucks
   end
 
-  scope module: 'shops' do
-    resources :magic_shops   
+  scope module: 'maps' do
+    resources :starts
+  end
+
+  scope module: 'castletowns' do
+    resources :wishing_wells, :item_shops, :towns
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

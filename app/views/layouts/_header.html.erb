@@ -7,7 +7,7 @@
       <%= link_to current_user do %>
         <div id = "main-logo"> </div>
       <% end %>
-      <%= link_to start_path do %>
+      <%= link_to starts_path do %>
         <div id = "map-icon"> </div>
       <% end %>
       <%= link_to "#" do %>
@@ -19,7 +19,7 @@
       <%= link_to "#" do %>
         <div id = "money-icon"> </div>
       <% end %>
-      <%= link_to "#" do %>
+      <%= link_to towns_path do %>
         <div id = "castle-icon"> </div>
       <% end %>
       
@@ -32,7 +32,7 @@
         
         <% if logged_in? %>
           <li><%= link_to "Users", users_path %></li>
-          <li><%= link_to "Game", start_path %></li>
+          <li><%= link_to "Game", starts_path %></li>
           <li><%= link_to "Messages", messages_path %></li>
           
           <li class="dropdown">
