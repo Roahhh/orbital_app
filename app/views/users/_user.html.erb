@@ -6,4 +6,6 @@
                                   data: { confirm: "Are you sure that you want to delete " + full_name(user) +"?" } %>
     | <%= link_to "Update", edit_user_path(user) %>                                  
    <% end %>
+   <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+   				"data-sid" => current_user.id, "data-rip" => user.id %>
 </li>

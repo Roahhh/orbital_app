@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   
   has_many :quest_assignments
   has_many :quests, :through => :quest_assignments
+  
+  has_many :conversations, :foreign_key => :sender_id
 
 	attr_accessor :remember_token
   @@exp_mul = 1.15
@@ -57,6 +59,10 @@ class User < ActiveRecord::Base
   def full_name
     return "Class " + self.class_no.to_s + " | " + self.identity_no + " | " + self.first_name + " " + self.last_name
   end 
+
+  def first_last_name
+    return self.first_name + " " + self.last_name
+  end
 
 # ---------------------------------------------------------------------------------------------------
 # The following methods are for Stats calculation

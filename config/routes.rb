@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   scope module: 'quests' do
     resources :mark_complete_quests
   end
+
+  resources :conversations do
+    resources :convomessages
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
