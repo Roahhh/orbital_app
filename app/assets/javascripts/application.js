@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require chat
+//= require private_pub
 //= require turbolinks
 //= require_tree .
 //= require effective_form_inputs

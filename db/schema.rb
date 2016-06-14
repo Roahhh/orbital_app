@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608085055) do
+ActiveRecord::Schema.define(version: 20160612163808) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(version: 20160608085055) do
 
   add_index "comments", ["message_id"], name: "index_comments_on_message_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "conversations", ["recipient_id"], name: "index_conversations_on_recipient_id"
+  add_index "conversations", ["sender_id"], name: "index_conversations_on_sender_id"
+
+  create_table "convomessages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "convomessages", ["conversation_id"], name: "index_convomessages_on_conversation_id"
+  add_index "convomessages", ["user_id"], name: "index_convomessages_on_user_id"
 
   create_table "items", force: :cascade do |t|
     t.string   "type"
@@ -101,7 +122,7 @@ ActiveRecord::Schema.define(version: 20160608085055) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 41
+    t.integer  "luck",            default: 79
     t.integer  "sp",              default: 3
     t.integer  "curr_hp",         default: 100
     t.integer  "curr_mp",         default: 30

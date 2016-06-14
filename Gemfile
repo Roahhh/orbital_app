@@ -14,6 +14,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'effective_form_inputs'
+gem 'private_pub'
+gem 'thin'
 
 group :development do
 	gem 'web-console', '~> 3.1'
@@ -25,7 +27,7 @@ group :development, :test do
 	gem 'byebug', '9.0.3'
 	gem 'spring', '1.7.1'
 end
-
+	
 group :test do
 	gem 'minitest-reporters', '1.1.9'
 	gem 'mini_backtrace', '0.1.3'
