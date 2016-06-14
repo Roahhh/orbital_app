@@ -2,7 +2,121 @@
 
 <div id="map-container" >
 
+	<%= link_to towns_path do %>
+  <div id = "castletown"></div>
+  <% end %>
+
+  <%= link_to '#' do %>
+  <div id = "broken-isle"> </div>
+  <% end %>
+
+  <%= link_to prairies_path do %>
+  <div id = "peaceful-prairie"> </div>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 10 %>
+  	<a title = " Required: Lvl 10" >
+  	<div id = "tower-of-trials"> </div>
+  	</a>
+  <% else %>
+  	<%= link_to '#' do %>
+  		<div id = "tower-of-trials"> </div>
+  	<% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 5 %>
+  	<a title = " Required: Lvl 5 ">
+  	<div id = "faerie-woods"> </div>
+  	</a>
+  <% else %>
+  	<%= link_to '#' do %>
+  		<div id = "faerie-woods"> </div>
+  	<% end %>
+  <% end %>
   
+	
+	<% if current_user.lvl.to_i < 3 %>
+  	<a title = " Required: Lvl 3 ">
+  	<div id = "sacred-grove"> </div>
+  	</a>
+  <% else %>
+  	<%= link_to '#' do %>
+  		<div id = "sacred-grove"> </div>
+  	<% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 8 %>
+  	<a title = " Required: Lvl 8 ">
+  	<div id = "savage-mts"> </div>
+  	</a>
+  <% else %>
+  	<%= link_to '#' do %>
+  		<div id = "savage-mts"> </div>
+  	<% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 10 %>
+  	<a title = " Required: Lvl 10 ">
+  	<div id = "martyr-outpost"> </div>
+  	</a>
+  <% else %>
+  	<%= link_to '#' do %>
+  		<div id = "martyr-outpost"> </div>
+  	<% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 15 %>
+    <a title = " Required: Lvl 15 ">
+    <div id = "inner-sea"> </div>
+    </a>
+  <% else %>
+    <%= link_to '#' do %>
+      <div id = "inner-sea"> </div>
+    <% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 10 %>
+    <a title = " Required: Lvl 10 ">
+    <div id = "twin-docks"> </div>
+    </a>
+  <% else %>
+    <%= link_to '#' do %>
+      <div id = "twin-docks"> </div>
+    <% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 20 %>
+    <a title = " Required: Lvl 20 ">
+    <div id = "exped-site"> </div>
+    </a>
+  <% else %>
+    <%= link_to '#' do %>
+      <div id = "exped-site"> </div>
+    <% end %>
+  <% end %>
+
+  <% if current_user.lvl.to_i < 20 %>
+    <a title = " Required: Lvl 20 ">
+    <div id = "pirate-cove"> </div>
+    </a>
+  <% else %>
+    <%= link_to '#' do %>
+      <div id = "pirate-cove"> </div>
+    <% end %>
+  <% end %>  
+
+  <% if current_user.lvl.to_i < 20 %>
+    <a title = " Required: Lvl 20 ">
+    <div id = "triangle-isle"> </div>
+    </a>
+  <% else %>
+    <%= link_to '#' do %>
+      <div id = "triangle-isle"> </div>
+    <% end %>
+  <% end %>  
+
+
+
 
 
 </div>

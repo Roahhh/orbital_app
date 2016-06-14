@@ -477,13 +477,13 @@ input {
 #map-container {
   padding: 0;
   margin: 0;
-  background-image: url(image_path('worldmaptemplate.png'));
+  background-image: url(image_path('worldmap2.png'));
   background-repeat:no-repeat;
   background-size: 100% 100%;
   background-color: rgba(0,0,0,0.25);
-  width: 1000px;
+  width: 1119px;
   margin: 0 auto;
-  height: 563px;
+  height: 629px;
   position: relative;
   z-index: 1;
   
@@ -663,3 +663,401 @@ input {
 
 }
 
+/* Map Locations */
+
+#castletown{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 58px;
+  margin: 0 auto;
+  height: 19px;
+  position: absolute;
+  top: 164px;
+  left: 358px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#tower-of-trials{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 26px;
+  margin: 0 auto;
+  height: 20px;
+  position: absolute;
+  top: 164px;
+  left: 300px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#peaceful-prairie{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 92px;
+  margin: 0 auto;
+  height: 35px;
+  position: absolute;
+  top: 225px;
+  left: 244px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#sacred-grove{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 68px;
+  margin: 0 auto;
+  height: 44px;
+  position: absolute;
+  top: 216px;
+  left: 348px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#savage-mts{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 122px;
+  margin: 0 auto;
+  height: 52px;
+  position: absolute;
+  top: 78px;
+  left: 210px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#faerie-woods{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 66px;
+  margin: 0 auto;
+  height: 38px;
+  position: absolute;
+  top: 292px;
+  left: 208px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#twin-docks{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 56px;
+  margin: 0 auto;
+  height: 34px;
+  position: absolute;
+  top: 128px;
+  left: 436px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#martyr-outpost{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 38px;
+  margin: 0 auto;
+  height: 33px;
+  position: absolute;
+  top: 294px;
+  left: 292px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+
+#inner-sea{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 65px;
+  margin: 0 auto;
+  height: 47px;
+  position: absolute;
+  top: 292px;
+  left: 423px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+
+#exped-site{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 39px;
+  margin: 0 auto;
+  height: 32px;
+  position: absolute;
+  top: 168px;
+  left: 564px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#broken-isle{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 69px;
+  margin: 0 auto;
+  height: 61px;
+  position: absolute;
+  top: 80px;
+  left: 78px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+
+#pirate-cove{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 66px;
+  margin: 0 auto;
+  height: 36px;
+  position: absolute;
+  top: 291px;
+  left: 120px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#ghastly-plains{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 68px;
+  margin: 0 auto;
+  height: 45px;
+  position: absolute;
+  top: 78px;
+  left: 622px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#mausoleum{
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 86px;
+  margin: 0 auto;
+  height: 70px;
+  position: absolute;
+  top: 156px;
+  left: 625px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#triangle-isle{
+
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 64px;
+  margin: 0 auto;
+  height: 54px;
+  position: absolute;
+  top: 288px;
+  left: 564px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#ancient-castle{
+
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 68px;
+  margin: 0 auto;
+  height: 30px;
+  position: absolute;
+  top: 510px;
+  left: 205px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#stranded-island{
+
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 82px;
+  margin: 0 auto;
+  height: 45px;
+  position: absolute;
+  top: 505px;
+  left: 489px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
