@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'maps' do
-    resources :starts
+    resources :starts, :prairies
   end
 
   scope module: 'castletowns' do

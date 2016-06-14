@@ -1020,3 +1020,51 @@ input {
   }
 
 }
+
+#ancient-castle{
+
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 68px;
+  margin: 0 auto;
+  height: 30px;
+  position: absolute;
+  top: 510px;
+  left: 205px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
+
+#stranded-island{
+
+  padding: 0;
+  margin: 0;
+  //background-image: url(image_path('well.png'));
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0);
+  width: 82px;
+  margin: 0 auto;
+  height: 45px;
+  position: absolute;
+  top: 505px;
+  left: 489px;
+  z-index: 2; 
+  span{
+    /* use to display links in html */
+  }
+  &:hover{
+  
+  }
+
+}
