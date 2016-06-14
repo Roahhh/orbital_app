@@ -1,0 +1,8 @@
+<li class="<%=  self_or_other(convomessage) %>">
+  <div class="chatboxmessagecontent">
+    <p><%= convomessage.body %></p>
+    <time datetime="<%= convomessage.created_at %>" title="<%= convomessage.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
+      <%= convomessage_interlocutor(convomessage).first_last_name %> • <%= convomessage.created_at.strftime("%H:%M %p") %>
+    </time>
+  </div>
+</li>
