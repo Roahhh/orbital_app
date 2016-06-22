@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'maps' do
-    resources :starts, :prairies
+    resources :starts, :prairies, :groves, :savage_mts, :faerie_woods
   end
 
   scope module: 'castletowns' do
