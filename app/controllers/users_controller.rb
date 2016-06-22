@@ -11,6 +11,12 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
+    @quests =  Quest.where(user_id: params[:id])
+
+    @quests.each do |quest|
+      quest.destroy
+    end
+    
     flash[:success] = "User deleted"
     redirect_to users_url
   end
