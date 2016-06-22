@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
   has_many :bugreports
   has_many :bugcomments
 
-  has_many :quest_assignments
-  has_many :quests, :through => :quest_assignments
+  has_many :quest_assignments, dependent: :destroy
+  has_many :quests, :through => :quest_assignments, 
   
-  has_many :conversations, :foreign_key => :sender_id
+  has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
 
 	attr_accessor :remember_token
   @@exp_mul = 1.15
