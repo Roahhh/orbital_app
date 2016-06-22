@@ -22,7 +22,7 @@ User.create!(first_name:  "Administrator",
   class_no = n % 4 + 1
   clan_name = class_no == 1 ? "Zeus" : 
               class_no == 2 ? "Odin" :
-              class_no == 3 ? "Dias" :
+              class_no == 3 ? "Thor" :
               class_no == 4 ? "Ares" :
               "Neutral"
 
