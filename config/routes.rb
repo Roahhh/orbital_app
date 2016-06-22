@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :bugreports do
+    resources :bugcomments
+  end
   scope module: 'users' do
     resources :add_stats, :add_exps, :roll_lucks
   end

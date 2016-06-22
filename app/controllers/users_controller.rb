@@ -27,7 +27,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    class_no = @user.class_no % 4
+    clan_name = class_no == 1 ? "Zeus" : 
+                class_no == 2 ? "Odin" :
+                class_no == 3 ? "Thor" :
+                class_no == 4 ? "Ares" :
+                "Neutral"
+
     params[:user][:luck] == rand(100)
+    @user.clan = clan_name
     params[:user][:admin] == '1' ? @user.admin = true : @user.admin = false
 
     if @user.save
@@ -55,7 +63,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:identity_no, :first_name, :last_name,
+      params.require(:user).permit(:identity_no, :first_name, :last_name, :class_no, :year,
                                    :email, :password,
                                    :password_confirmation)
     end

@@ -40,7 +40,7 @@ end
 
 Town.create!(name: "Zeus")
 Town.create!(name: "Odin")
-Town.create!(name: "Dias")
+Town.create!(name: "Thor")
 Town.create!(name: "Ares")
 
 
