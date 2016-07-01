@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'castletowns' do
-    resources :wishing_wells, :item_shops, :towns, :taverns
+    resources :wishing_wells, :item_shops, :towns, :taverns, :eq_shops
   end
 
   scope module: 'quests' do
