@@ -1,0 +1,48 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+#encounter-container {
+  padding: 0;
+  margin: 0;
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(0,0,0,0.25);
+  width: 800px;
+  margin: 0 auto;
+  height: 450px;
+  position: relative;
+  z-index: 1;
+}
+
+
+#monster-container{
+	span{
+		font-family: "";
+		font-size: "";
+
+
+	}
+}
+
+
+#monster
+
+
+#encounter-message{
+	padding: 0;
+  margin: 3;
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-color: rgba(1,0,0,0.25);
+  width: 50%;
+  margin: 0 auto;
+  height: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
