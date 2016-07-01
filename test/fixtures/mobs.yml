@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hp: 1
+  gold: 1
+  resource_pt: 1
+  att: 1
+
+two:
+  hp: 1
+  gold: 1
+  resource_pt: 1
+  att: 1
