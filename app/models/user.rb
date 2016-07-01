@@ -2,11 +2,13 @@ class User < ActiveRecord::Base
   has_many :messages, dependent: :destroy
   has_many :comments, dependent: :destroy
   
-  has_many :quest_assignments
+  has_many :bugreports
+  has_many :bugcomments
+
+  has_many :quest_assignments, dependent: :destroy
   has_many :quests, :through => :quest_assignments
   
-  has_many :conversations, :foreign_key => :sender_id
-
+  has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
 	attr_accessor :remember_token
   @@exp_mul = 1.15
 
@@ -17,6 +19,9 @@ class User < ActiveRecord::Base
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
+  validates :class_no, presence: true
+  validates :year, presence: true
+
 	validates :email, length: {maximum: 255}, 
 	           format: { with: VALID_EMAIL_REGEX },
 	           uniqueness: { case_sensitive: false }

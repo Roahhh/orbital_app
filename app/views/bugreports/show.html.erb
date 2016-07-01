@@ -1,0 +1,33 @@
+<% provide(:title, @bugreport.title) %>
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="message-show">
+
+    <h2><strong><%= @bugreport.title %></strong></h2>
+    <p class="message-desc"><%= @bugreport.description %></p>
+    <p class="message-posted-by" style="text-align:right">Reported by <%= full_name(@bugreport.user) %> <%= time_ago_in_words(@bugreport.created_at) %> ago </p>
+
+    <h3 class="comment-section-header">Replies:</h3><br>
+
+    <% if @bugreport.bugcomments.count == 0 %>
+      <h4 class="comment-section-header">There are no replies to this report</h4>
+    <% else %>
+      <%= render @bugreport.bugcomments %>
+    <% end %>
+
+<br><br>
+    <h3 class="reply-to-msg">Reply to this Report:</h3>
+    <%= render 'bugcomments/form' %>
+
+      <div class="links btn-group">
+        <% if logged_in? %>
+          <% if current_user?(User.find(@bugreport.user_id)) || current_user.admin? %>
+          <%= link_to 'Edit Report', edit_bugreport_path(@bugreport), class: 'btn btn-default' %>
+          <%= link_to 'Delete Report', @bugreport, method: :delete,
+                                                  data: { confirm: "Are you sure that you want to delete this bug report?" },
+                                                  class: 'btn btn-default' %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+</div>

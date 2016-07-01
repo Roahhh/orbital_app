@@ -1,0 +1,6 @@
+<%= simple_form_for @bugreport do |f| %>
+  <%= render 'shared/error_messages_fbug' %>
+  <%= f.input :title, label: "Brief Summary of Bug" %>
+  <%= f.input :description, placeholder: 'Briefly explain what the problem is and provide us with as many details as possible, such as where the bug is found etc...' %>
+  <%= f.button :submit %>
+<% end %>

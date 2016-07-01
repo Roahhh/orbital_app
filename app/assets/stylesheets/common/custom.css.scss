@@ -358,7 +358,7 @@ input {
 
 .progress {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) inset;
-  height: 30px;
+  height: 40px;
   position: relative;
   span {
     position: absolute;
@@ -366,7 +366,7 @@ input {
     z-index: 2;
     text-align: center;
     width: 100%;
-    line-height: 30px;
+    line-height: 20px;
   }
 }
 

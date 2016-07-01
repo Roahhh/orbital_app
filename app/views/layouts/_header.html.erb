@@ -31,19 +31,20 @@
         <li><%= link_to "Home", root_path %></li>
         
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Game", starts_path %></li>
           <% if is_teacher? %>
             <li><%= link_to "Quest Creation", new_quest_path %>
+            <li><%= link_to "Users", users_path %></li>
           <% end %>
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Message Board <b class="caret"></b>
+              Tavern <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Messages", messages_path %></li>
+              <li><%= link_to "Message Board", messages_path %></li>
               <li><%= link_to "New Message", new_message_path %></li>
+              <li><%= link_to "Chatroom", users_path %></li>
             </ul>
           </li>
           
