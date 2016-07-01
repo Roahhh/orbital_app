@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'students/new'
 
+  get 'fight' => 'fights#index'
+
   root 'static_pages#home'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'castletowns' do
-    resources :wishing_wells, :item_shops, :towns
+    resources :wishing_wells, :item_shops, :towns, :taverns
   end
 
   scope module: 'quests' do
