@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614093846) do
+ActiveRecord::Schema.define(version: 20160701072745) do
 
   create_table "bugcomments", force: :cascade do |t|
     t.text     "content"
@@ -66,20 +66,22 @@ ActiveRecord::Schema.define(version: 20160614093846) do
   add_index "convomessages", ["user_id"], name: "index_convomessages_on_user_id"
 
   create_table "items", force: :cascade do |t|
-    t.string   "type"
+    t.string   "shop"
     t.string   "name"
     t.string   "description"
-    t.integer  "lvl",         default: 1
-    t.integer  "hp",          default: 0
-    t.integer  "mp",          default: 0
-    t.integer  "str",         default: 0
-    t.integer  "agi",         default: 0
-    t.integer  "vit",         default: 0
-    t.integer  "int",         default: 0
-    t.integer  "rec_hp",      default: 0
-    t.integer  "rec_mp",      default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "lvl",               default: 1
+    t.integer  "hp",                default: 0
+    t.integer  "mp",                default: 0
+    t.integer  "str",               default: 0
+    t.integer  "agi",               default: 0
+    t.integer  "vit",               default: 0
+    t.integer  "int",               default: 0
+    t.integer  "rec_hp",            default: 0
+    t.integer  "rec_mp",            default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "cost"
+    t.string   "class_restriction"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -88,6 +90,17 @@ ActiveRecord::Schema.define(version: 20160614093846) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+  end
+
+  create_table "mobs", force: :cascade do |t|
+    t.integer  "hp"
+    t.integer  "gold"
+    t.integer  "resource_pt"
+    t.integer  "att"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.string   "description"
   end
 
   create_table "quest_assignments", force: :cascade do |t|
@@ -142,7 +155,7 @@ ActiveRecord::Schema.define(version: 20160614093846) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 63
+    t.integer  "luck",            default: 98
     t.integer  "sp",              default: 3
     t.integer  "curr_hp",         default: 100
     t.integer  "curr_mp",         default: 30
