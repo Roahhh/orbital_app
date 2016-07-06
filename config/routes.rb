@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :quests
 
+  resources :itemassignments
+  
   resources :messages do
     resources :comments
   end

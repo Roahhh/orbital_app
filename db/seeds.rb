@@ -31,6 +31,7 @@ Town.create!(name: "Zeus")
 Town.create!(name: "Odin")
 Town.create!(name: "Thor")
 Town.create!(name: "Ares")
+Town.create!(name: "Neutral", item_lvl: 99, eqp_lvl: 99, castle_lvl: 99)
 
 100.times do |n|
   first_name = Faker::Name.first_name

@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   has_many :quest_assignments, dependent: :destroy
   has_many :quests, :through => :quest_assignments
+
+  has_many :item_assignments, dependent: :destroy
+  has_many :items, :through => :item_assignments
   
   has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
 	attr_accessor :remember_token
