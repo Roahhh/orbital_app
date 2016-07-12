@@ -17,8 +17,10 @@ class ItemassignmentsController < ApplicationController
 			@itemassignment.save
 		end
 
-		redirect_to item_shops_path
-
+		if @location = "Item"
+			redirect_to item_shops_path
+		elsif @location = "Equipment"
+		end
 	end
 
 	private

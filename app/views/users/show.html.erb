@@ -1,23 +1,10 @@
 <% provide(:title, full_name(@user))%>
-
-<%= render 'expbar' %>
+<h1><%= full_name(@user) %>'s Status</h1>
+<br>
 
 <%= render 'profile' %>
 
 <br>
-<table>
-  <tr>
-    <th colspan = "4">Achievements</th>
-  </tr>
-
-  <tr>
-    <th colspan="4"><br></th>
-  </tr>
-</table>
-
-<br>
-
-
 
 <div class="col-md-8">
 	<% if current_user.admin? && current_user?(@user) %>
