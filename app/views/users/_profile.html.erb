@@ -17,7 +17,7 @@
     </td>
     <th>Job:</th>
     <td>
-      <%= @user.job.titleize %>
+      <%= Job.find(@user.job_id).name.titleize %>
     </td>
   </tr>
 
@@ -65,6 +65,14 @@
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
+
+    <th>Weapon:</th>
+    <td colspan="2">
+      <% if @weapon == nil %>
+      <% else %>
+        <%= @weapon.name %>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
@@ -76,6 +84,14 @@
            <%= link_to '+', add_stat_path(:id => @user.id, :stat => "agi"), method: :patch, 
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
+    </td>
+
+    <th>Head:</th>
+    <td colspan="2">
+      <% if @head == nil %>
+      <% else %>
+        <%= @head.name %>
+      <% end %>
     </td>  
   </tr>
 
@@ -89,6 +105,14 @@
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
+
+    <th>Armor:</th>
+    <td colspan="2">
+      <% if @body == nil %>
+      <% else %>
+        <%= @body.name %>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
@@ -100,6 +124,14 @@
            <%= link_to '+', add_stat_path(:id => @user.id, :stat => "int"), method: :patch, 
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
+    </td>
+
+    <th>Boots:</th>
+    <td colspan="2">
+      <% if @boots == nil %>
+      <% else %>
+        <%= @boots.name %>
+      <% end %>
     </td>
   </tr>
 

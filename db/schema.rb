@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713025750) do
+ActiveRecord::Schema.define(version: 20160713093552) do
 
   create_table "bugcomments", force: :cascade do |t|
     t.text     "content"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20160713025750) do
     t.string   "title"
     t.text     "description"
     t.boolean  "completed",   default: false
+    t.integer  "user_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -86,30 +86,53 @@ ActiveRecord::Schema.define(version: 20160713025750) do
     t.integer  "int",               default: 0
     t.integer  "rec_hp",            default: 0
     t.integer  "rec_mp",            default: 0
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "cost"
+    t.integer  "cost",              default: 0
     t.string   "class_restriction"
     t.string   "body_pt"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "castle_lvl",  default: 1
+    t.integer  "lvl",         default: 1
+    t.integer  "hp",          default: 0
+    t.integer  "mp",          default: 0
+    t.integer  "str",         default: 0
+    t.integer  "agi",         default: 0
+    t.integer  "vit",         default: 0
+    t.integer  "int",         default: 0
+    t.integer  "luck",        default: 0
+    t.integer  "hp_bonus",    default: 0
+    t.integer  "mp_bonus",    default: 0
+    t.integer  "str_bonus",   default: 0
+    t.integer  "agi_bonus",   default: 0
+    t.integer  "vit_bonus",   default: 0
+    t.integer  "int_bonus",   default: 0
+    t.boolean  "hidden",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "messages", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
   end
 
   create_table "mobs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
     t.integer  "hp"
     t.integer  "gold"
     t.integer  "resource_pt"
     t.integer  "att"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "name"
-    t.string   "description"
   end
 
   create_table "quest_assignments", force: :cascade do |t|
@@ -130,9 +153,9 @@ ActiveRecord::Schema.define(version: 20160713025750) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "quests", ["created_at"], name: "index_quests_on_creator_id_and_created_at"
   add_index "quests", ["user_id", "created_at"], name: "index_quests_on_user_id_and_created_at"
   add_index "quests", ["user_id"], name: "index_quests_on_user_id"
+  add_index "quests", [nil, "created_at"], name: "index_quests_on_creator_id_and_created_at"
 
   create_table "towns", force: :cascade do |t|
     t.string   "name"
@@ -155,19 +178,17 @@ ActiveRecord::Schema.define(version: 20160713025750) do
     t.integer  "exp",             default: 0
     t.boolean  "admin",           default: false
     t.string   "password_digest"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
     t.string   "remember_digest"
     t.integer  "hp",              default: 100
+    t.integer  "curr_hp",         default: 100
     t.integer  "mp",              default: 30
+    t.integer  "curr_mp",         default: 30
     t.integer  "str",             default: 10
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 76
+    t.integer  "luck",            default: 19
     t.integer  "sp",              default: 3
-    t.integer  "curr_hp",         default: 100
-    t.integer  "curr_mp",         default: 30
     t.integer  "hp_job",          default: 0
     t.integer  "mp_job",          default: 0
     t.integer  "str_job",         default: 0
@@ -180,7 +201,7 @@ ActiveRecord::Schema.define(version: 20160713025750) do
     t.integer  "agi_eqp",         default: 0
     t.integer  "vit_eqp",         default: 0
     t.integer  "int_eqp",         default: 0
-    t.string   "job",             default: "Apprentice"
+    t.integer  "job_id",          default: 1
     t.string   "clan",            default: "Neutral"
     t.string   "title"
     t.integer  "class_no"
@@ -191,6 +212,8 @@ ActiveRecord::Schema.define(version: 20160713025750) do
     t.string   "eqp_body"
     t.string   "eqp_boots"
     t.string   "eqp_wpn"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["identity_no"], name: "index_users_on_identity_no", unique: true

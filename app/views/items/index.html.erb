@@ -1,5 +1,8 @@
-<h1><%= full_name(current_user) %>'s Inventory</h1>
+<% provide(:title, 'Inventory') %>
 
+<h1><%= full_name(current_user) %>'s Inventory</h1>
+<br>
+<h3>Items:</h3>
 <table>
 	<tr>
 		<th>#</th>
@@ -15,4 +18,107 @@
     		<td><%= itemassign.quantity %></td>
 		</tr>
 	<% end %>
+</table>
+
+<h3>Equipment(Weapon):</h3>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    
+    <% @weapons.each_with_index do |equip, index| %>
+        <tr>
+            <td><%= index +=1 %></td>
+            <td><span title="<%= equip.description %>" ><%= equip.name %></span></td>
+            <td>
+                <% if equip.id.to_i == current_user.eqp_wpn.to_i %>
+                    <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                    <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                <% else %>
+                    <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<h3>Equipment(Head):</h3>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    
+    <% @heads.each_with_index do |equip, index| %>
+        <% itemassign = ItemAssignment.find_by(item_id: equip.id, user_id: current_user.id) %>
+        <tr>
+            <td><%= index +=1 %></td>
+            <td><span title="<%= equip.description %>" ><%= equip.name %></span></td>
+            <td>
+                <% if equip.id.to_i == current_user.eqp_head.to_i %>
+                    <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                    <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                <% else %>
+                    <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<h3>Equipment(Armor):</h3>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    
+    <% @armors.each_with_index do |equip, index| %>
+        <% itemassign = ItemAssignment.find_by(item_id: equip.id, user_id: current_user.id) %>
+        <tr>
+            <td><%= index +=1 %></td>
+            <td><span title="<%= equip.description %>" ><%= equip.name %></span></td>
+            <td>
+                <% if equip.id.to_i == current_user.eqp_body.to_i %>
+                    <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                    <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                <% else %>
+                    <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<h3>Equipment(Boots):</h3>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    
+    <% @boots.each_with_index do |equip, index| %>
+        <% itemassign = ItemAssignment.find_by(item_id: equip.id, user_id: current_user.id) %>
+        <tr>
+            <td><%= index +=1 %></td>
+            <td><span title="<%= equip.description %>" ><%= equip.name %></span></td>
+            <td>
+                <% if equip.id.to_i == current_user.eqp_boots.to_i %>
+                    <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                    <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                <% else %>
+                    <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
 </table>

@@ -1,17 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-User.create!(first_name:  "Administrator",
-             last_name: "1",
-             identity_no: "admin1",
-             email: "admin1@roleplay.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin: true,
-             class_no: 0,
-             year: 0,
-             clan: "Neutral",
-             title: "Administrator")
 
 Item.create!(shop: "Item", name: "Potion", description: "Restores 10 HP", lvl: 1, rec_hp: 10, cost: 10)
 Item.create!(shop: "Item", name: "Hi-Potion", description: "Restores 50 HP", lvl: 2, rec_hp: 50, cost: 50)
@@ -32,6 +20,28 @@ Town.create!(name: "Odin")
 Town.create!(name: "Thor")
 Town.create!(name: "Ares")
 Town.create!(name: "Neutral", item_lvl: 99, eqp_lvl: 99, castle_lvl: 99)
+
+Job.create!(name: "Apprentice", str: 1.5)
+Job.create!(name: "Warrior", str: 2.5, agi: 0.5, str_bonus: 2, agi_bonus: 1)
+Job.create!(name: "Mage", int: 2.8, luck: 0.2, int_bonus: 3)
+Job.create!(name: "Thief", agi: 2.5, vit: 0.5, agi_bonus: 2, vit_bonus: 1)
+Job.create!(name: "Monk", str: 1.5, vit: 1.5, str_bonus: 2, vit_bonus: 1)
+Job.create!(name: "Magic_Knight", str: 2, int: 2, str_bonus: 3, int_bonus: 3, hidden: true)
+Job.create!(name: "Berserker", int: 1, vit: 3, vit_bonus: 4, int_bonus: 2, hidden: true)
+
+User.create!(first_name:  "Administrator",
+             last_name: "1",
+             identity_no: "admin1",
+             email: "admin1@roleplay.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: true,
+             class_no: 0,
+             year: 0,
+             clan: "Neutral",
+             title: "Administrator",
+             gold_pts: 10000,
+             resource_pts: 10000)
 
 100.times do |n|
   first_name = Faker::Name.first_name

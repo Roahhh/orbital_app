@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  castle_lvl: 1
+  lvl: 1
+  hp: 1
+  mp: MyString
+  integer: MyString
+  str: 1
+  agi: 1
+  vit: 1
+  int: 1
+  luck: 1
+
+two:
+  name: MyString
+  description: MyString
+  castle_lvl: 1
+  lvl: 1
+  hp: 1
+  mp: MyString
+  integer: MyString
+  str: 1
+  agi: 1
+  vit: 1
+  int: 1
+  luck: 1

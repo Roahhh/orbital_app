@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @quests = @user.quests.paginate(page: params[:page])
     @createdquests = Quest.where(user_id: params[:id])
+    @weapon = @user.eqp_wpn == nil ? nil : Item.find(@user.eqp_wpn)
+    @head = @user.eqp_head == nil ? nil : Item.find(@user.eqp_head)
+    @body = @user.eqp_body == nil ? nil : Item.find(@user.eqp_body)
+    @boots = @user.eqp_boots == nil ? nil : Item.find(@user.eqp_boots)
   end
 
   def create

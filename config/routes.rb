@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :bugcomments
   end
   scope module: 'users' do
-    resources :add_stats, :add_exps, :roll_lucks
+    resources :add_stats, :add_exps, :roll_lucks, :equip_equipments, :unequip_equipments
   end
 
   scope module: 'maps' do
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'castletowns' do
-    resources :wishing_wells, :item_shops, :towns, :taverns, :eq_shops
+    resources :wishing_wells, :item_shops, :towns, :taverns, :eq_shops, :castles
   end
 
   scope module: 'quests' do

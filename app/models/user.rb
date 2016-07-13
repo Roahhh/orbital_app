@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
   has_many :quest_assignments, dependent: :destroy
   has_many :quests, :through => :quest_assignments
 
+
   has_many :item_assignments, dependent: :destroy
   has_many :items, :through => :item_assignments
+  has_one :jobclass
   
   has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
 	attr_accessor :remember_token
@@ -32,7 +34,6 @@ class User < ActiveRecord::Base
 	           uniqueness: { case_sensitive: false }
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :sp, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
-  validates :job, inclusion: { in: %w(Apprentice Warrior Mage Thief Monk Magic_Knight Berserker), message: "%{value} is not a job class" }
 
 	has_secure_password
 
@@ -138,6 +139,30 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def minus_vit(amt, loc)
+    if loc == ""
+      self.vit -= amt
+      self.hp = self.vit * 10
+    elsif loc == "job" || loc == "eqp"
+      self["vit_" + loc] -= amt
+      self["hp_" + loc] = self["vit_" + loc] * 10
+    end
+
+    self.save
+  end
+
+  def minus_int(amt, loc)
+    if loc == ""
+      self.int -= amt
+      self.mp = self.int * 3
+    elsif loc == "job" || loc == "eqp"
+      self["int_" + loc] -= amt
+      self["mp_" + loc] = self["int_" + loc] * 3
+    end
+
+    self.save
+  end
+
 # This method is specific for users to add their sp
   def add_stat(stat)
     if self.sp <= 0
@@ -220,8 +245,59 @@ class User < ActiveRecord::Base
       self.add_exp(exp - to_lvl_exp)
     end
   end
+# ---------- Equipping related methods -----------
+  def equip(equipment)
+    if equipment.shop != "Equipment"
+      flash[:danger] = "Item is not an Equipment!"
+    end
 
-# ---------------------------------------------------------------------------------------------------
+    if equipment.body_pt == "Head"
+      self.eqp_head = equipment.id
+    elsif equipment.body_pt == "Body"
+      self.eqp_body = equipment.id
+    elsif equipment.body_pt == "Boots"
+      self.eqp_boots = equipment.id
+    elsif equipment.body_pt == "Weapon"
+      self.eqp_wpn = equipment.id
+    else
+      flash[:danger] = "Error equipping equipment. Please report this to the administrators. Thank you!"
+    end
+
+
+    self.str_eqp += equipment.str.to_i
+    self.agi_eqp += equipment.agi.to_i
+    self.add_vit(equipment.vit.to_i, "eqp")
+    self.add_int(equipment.int.to_i, "eqp")
+    self.hp_eqp += equipment.hp.to_i
+    self.mp_eqp += equipment.mp.to_i
+    self.save
+  end
+
+  def unequip(equipment)
+    if equipment.shop != "Equipment"
+      flash[:danger] = "Item is not an Equipment!"
+    end
+
+    if equipment.body_pt == "Head"
+      self.eqp_head = nil
+    elsif equipment.body_pt == "Body"
+      self.eqp_body = nil
+    elsif equipment.body_pt == "Boots"
+      self.eqp_boots = nil
+    elsif equipment.body_pt == "Weapon"
+      self.eqp_wpn = nil
+    else
+      flash[:danger] = "Error equipping equipment. Please report this to the administrators. Thank you!"
+    end
+
+    self.str_eqp -= equipment.str.to_i
+    self.agi_eqp -= equipment.agi.to_i
+    self.minus_vit(equipment.vit.to_i, "eqp")
+    self.minus_int(equipment.int.to_i, "eqp")
+    self.hp_eqp -= equipment.hp.to_i
+    self.mp_eqp -= equipment.mp.to_i
+    self.save
+  end
 # -------- methods for rolling luck for wishing well --------------------------------------
   def roll_luck
     self.luck = rand(100)
@@ -229,3 +305,4 @@ class User < ActiveRecord::Base
     self.save
   end  
 end
+# ---------------------------------------------------------------------------------------------------

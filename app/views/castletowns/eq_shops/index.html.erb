@@ -44,7 +44,7 @@ You currently have <%= current_user.gold_pts %> gold.
     			     <% else %>
     			     <% end %>"
                     >
-    			<%= number_field_tag 'quantity', 0, { min: 0, max: (99 - @quantity), disabled: @shoplvl < item.lvl } %>
+    			<%= number_field_tag 'quantity', 0, { min: 0, max: (1 - @quantity), disabled: @shoplvl < item.lvl } %>
     			</span></td>
 
     			<td><%= submit_tag "Buy item" %></td>
