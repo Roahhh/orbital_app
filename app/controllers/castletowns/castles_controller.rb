@@ -5,5 +5,9 @@ class Castletowns::CastlesController < ApplicationController
     @clan = current_user.clan
     @town = Town.find_by(name: @clan)
     @castlelvl = @town.castle_lvl
+    @jobs = Job.where(hidden: false)
+    @hiddenjobs = Job.where(hidden: true)
+    @index = 0
+    @currenthiddenjob = nil
   end
 end

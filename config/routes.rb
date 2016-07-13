@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :bugcomments
   end
   scope module: 'users' do
-    resources :add_stats, :add_exps, :roll_lucks, :equip_equipments, :unequip_equipments
+    resources :add_stats, :add_exps, :roll_lucks, :equip_equipments, :unequip_equipments, :change_jobs
   end
 
   scope module: 'maps' do

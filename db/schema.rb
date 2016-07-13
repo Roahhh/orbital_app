@@ -98,13 +98,13 @@ ActiveRecord::Schema.define(version: 20160713093552) do
     t.string   "description"
     t.integer  "castle_lvl",  default: 1
     t.integer  "lvl",         default: 1
-    t.integer  "hp",          default: 0
-    t.integer  "mp",          default: 0
-    t.integer  "str",         default: 0
-    t.integer  "agi",         default: 0
-    t.integer  "vit",         default: 0
-    t.integer  "int",         default: 0
-    t.integer  "luck",        default: 0
+    t.float    "hp",          default: 0.0
+    t.float    "mp",          default: 0.0
+    t.float    "str",         default: 0.0
+    t.float    "agi",         default: 0.0
+    t.float    "vit",         default: 0.0
+    t.float    "int",         default: 0.0
+    t.float    "luck",        default: 0.0
     t.integer  "hp_bonus",    default: 0
     t.integer  "mp_bonus",    default: 0
     t.integer  "str_bonus",   default: 0
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20160713093552) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 19
+    t.integer  "luck",            default: 31
     t.integer  "sp",              default: 3
     t.integer  "hp_job",          default: 0
     t.integer  "mp_job",          default: 0

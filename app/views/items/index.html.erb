@@ -35,7 +35,14 @@
             <td>
                 <% if equip.id.to_i == current_user.eqp_wpn.to_i %>
                     <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
-                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction.to_i != current_user.job_id.to_i) %>
+                <span title="Requirements to equip:
+                    Level: <%= equip.lvl %>
+                    Class: <%= if equip.class_restriction != nil 
+                                Job.find(equip.class_restriction).name.titleize
+                               else 
+                                'All Classes'
+                               end %>".html_safe>
                     <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
                 <% else %>
                     <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
@@ -61,7 +68,7 @@
             <td>
                 <% if equip.id.to_i == current_user.eqp_head.to_i %>
                     <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
-                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction.to_i != current_user.job_id.to_i) %>
                     <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
                 <% else %>
                     <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
@@ -87,7 +94,7 @@
             <td>
                 <% if equip.id.to_i == current_user.eqp_body.to_i %>
                     <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
-                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction.to_i != current_user.job_id.to_i) %>
                     <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
                 <% else %>
                     <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
@@ -113,7 +120,7 @@
             <td>
                 <% if equip.id.to_i == current_user.eqp_boots.to_i %>
                     <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
-                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction != current_user.job) %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction.to_i != current_user.job_id.to_i) %>
                     <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
                 <% else %>
                     <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>

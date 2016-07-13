@@ -22,12 +22,12 @@ Town.create!(name: "Ares")
 Town.create!(name: "Neutral", item_lvl: 99, eqp_lvl: 99, castle_lvl: 99)
 
 Job.create!(name: "Apprentice", str: 1.5)
-Job.create!(name: "Warrior", str: 2.5, agi: 0.5, str_bonus: 2, agi_bonus: 1)
-Job.create!(name: "Mage", int: 2.8, luck: 0.2, int_bonus: 3)
-Job.create!(name: "Thief", agi: 2.5, vit: 0.5, agi_bonus: 2, vit_bonus: 1)
-Job.create!(name: "Monk", str: 1.5, vit: 1.5, str_bonus: 2, vit_bonus: 1)
-Job.create!(name: "Magic_Knight", str: 2, int: 2, str_bonus: 3, int_bonus: 3, hidden: true)
-Job.create!(name: "Berserker", int: 1, vit: 3, vit_bonus: 4, int_bonus: 2, hidden: true)
+Job.create!(name: "Warrior", castle_lvl: 5, str: 2.5, agi: 0.5, str_bonus: 2, agi_bonus: 1)
+Job.create!(name: "Mage", castle_lvl: 5, lvl: 5, int: 2.8, luck: 0.2, int_bonus: 3)
+Job.create!(name: "Thief", castle_lvl: 5, lvl: 5, agi: 2.5, vit: 0.5, agi_bonus: 2, vit_bonus: 1)
+Job.create!(name: "Monk", castle_lvl: 5, lvl: 5, str: 1.5, vit: 1.5, str_bonus: 2, vit_bonus: 1)
+Job.create!(name: "Magic_Knight", castle_lvl: 10, lvl:20, str: 2, int: 2, str_bonus: 3, int_bonus: 3, hidden: true)
+Job.create!(name: "Berserker", castle_lvl: 10, lvl: 20, int: 1, vit: 3, vit_bonus: 4, int_bonus: 2, hidden: true)
 
 User.create!(first_name:  "Administrator",
              last_name: "1",
