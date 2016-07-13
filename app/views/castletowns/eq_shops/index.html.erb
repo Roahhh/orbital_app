@@ -1,8 +1,55 @@
 <% provide(:title, 'Equipment Shop') %>
 
+<h1><%= @clan %>'s Equipment Shop</h1>
+
 <p>
 
 All manners of gear and outfits for the fancy or impoverished Adventurer.
 "Feed thee palms with gold and thee hands to grant you thy wares"
 
 </p>
+
+<br>
+<p>
+You currently have <%= current_user.gold_pts %> gold.
+</p>
+<br>
+<table>
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Inventory</th>
+		<th>Purchase</th>
+		<th></th>
+    </tr>
+    
+    <% @items.each_with_index do |item, index| %>
+    	<tr>
+    		<td><%= index +=1 %></td>
+    		<td><span title="<%= item.description %>" ><%= item.name %></span></td>
+    		<td><%= item.cost %></td>
+    		<td>
+    			<% if ItemAssignment.find_by(item_id: item.id, user_id: current_user.id) == nil %>
+    			<% else %>
+    				<% @quantity = ItemAssignment.find_by(item_id: item.id, user_id: current_user.id).quantity.to_i %>
+    			<% end %>
+    			<%= @quantity %>
+    		</td>
+    		<%= form_tag itemassignments_path(item_id: item.id, user_id: current_user.id, cost: item.cost, location: @location) do |f| %>
+    	
+    			<td><span title="
+    			     <% if @shoplvl < item.lvl %>
+    			     <%='Can only be bought if shop is higher than level ' + item.lvl.to_s %>
+    			     <% else %>
+    			     <% end %>"
+                    >
+    			<%= number_field_tag 'quantity', 0, { min: 0, max: (99 - @quantity), disabled: @shoplvl < item.lvl } %>
+    			</span></td>
+
+    			<td><%= submit_tag "Buy item" %></td>
+    		<% end %>
+
+		</tr>
+	<% end %>
+</table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706070018) do
+ActiveRecord::Schema.define(version: 20160713025750) do
 
   create_table "bugcomments", force: :cascade do |t|
     t.text     "content"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160706070018) do
     t.datetime "updated_at",                    null: false
     t.integer  "cost"
     t.string   "class_restriction"
+    t.string   "body_pt"
   end
 
   create_table "messages", force: :cascade do |t|

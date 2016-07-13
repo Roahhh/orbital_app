@@ -21,9 +21,9 @@ Item.create!(shop: "Item", name: "Turbo Ether", description: "Restores 50 MP", l
 Item.create!(shop: "Item", name: "Max Ether", description: "Restores 200 MP", lvl: 3, rec_mp: 200, cost: 200)
 Item.create!(shop: "Item", name: "Elixir", description: "Restores 100 HP and MP", lvl: 3, rec_hp: 100, rec_mp: 100, cost: 250)
 Item.create!(shop: "Equipment", name: "Beginner's Sword", description: "This sword holds the might of infinite possibilities, the starting point for every adventurer worthy of taking of the gratuitous task of battle. Lacks a reliable edge though.",
-             str: 3)
+             str: 3, cost: 100, body_pt: "Weapon")
 Item.create!(shop: "Equipment", name: "Beginner's Armor", description: "This armour is crafted from steel tempered with the shining dreams and burning souls of every would-be adventurer. An invaluable companion for your journey, though it won't survive three hits from a goblin.", 
-            hp: 50)
+            hp: 50, cost: 100, body_pt: "Body")
 
 Mob.create!(name: "Goblin", description: "A goblin so common that there is no description for it.", hp: 100, att: 10, gold: 100, resource_pt: 20)
 
