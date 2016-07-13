@@ -12,6 +12,7 @@ class FightsController < ApplicationController
   end
 
   def death
+    flash[:danger] = death_message
   end
 
   def drops
@@ -59,4 +60,9 @@ class FightsController < ApplicationController
     @messages = ["A devilish presence has appeared", "You sense a hostile intent directed towards you", "You stumbled across the path of a wandering monster"]
     return @messages.sample
   end
+
+  def death_message
+    @death_messages = ["You have been slain in battle", "Thou hath died a gruesome death", "Your vision becomes enshrouded with darkness", "The reaper claims your soul"]
+    return @death_messages.sample
+  end  
 end
