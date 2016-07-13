@@ -5,6 +5,7 @@ class FightsController < ApplicationController
   before_action :admin_user,     only: [:destroy, :create]
 
   def index
+     flash[:danger] = random_message
   end
 
   def combat
@@ -24,30 +25,38 @@ class FightsController < ApplicationController
     unless current_user.hp > 0 || current_user.admin?
 
       if current_user.hp == 0
-				flash[:danger] = "You do not have sufficient HP"
+			  flash[:danger] = "You do not have sufficient HP"
 
+      end
     end
   end
 
   def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
+  end
 
   def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user) || current_user.admin?
-    end
+  end
 
-    def only_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  def only_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+
+  private
+
+  def random_message
+    @messages = ["A devilish presence has appeared", "You sense a hostile intent directed towards you", "You stumbled across the path of a wandering monster"]
+    return @messages.sample
+  end
 end
