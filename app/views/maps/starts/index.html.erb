@@ -2,15 +2,15 @@
 
 <div id="map-container" >
 
-	<%= link_to towns_path do %>
+	<%= link_to towns_path, :title => 'enter your Castletown' do %>
   <div id = "castletown"></div>
   <% end %>
 
-  <%= link_to '#' do %>
+  <%= link_to '#', :title => 'enter the Broken Isles' do %>
   <div id = "broken-isle"> </div>
   <% end %>
 
-  <%= link_to prairies_path do %>
+  <%= link_to prairies_path, :title => 'enter the Peaceful Prairies' do %>
   <div id = "peaceful-prairie"> </div>
   <% end %>
 
@@ -19,7 +19,7 @@
   	<div id = "tower-of-trials"> </div>
   	</a>
   <% else %>
-  	<%= link_to '#' do %>
+  	<%= link_to '#', :title => 'enter the Tower of Trials' do %>
   		<div id = "tower-of-trials"> </div>
   	<% end %>
   <% end %>
@@ -29,7 +29,7 @@
   	<div id = "faerie-woods"> </div>
   	</a>
   <% else %>
-  	<%= link_to '#' do %>
+  	<%= link_to '#', :title => "enter Faerie Woods" do %>
   		<div id = "faerie-woods"> </div>
   	<% end %>
   <% end %>
@@ -40,7 +40,7 @@
   	<div id = "sacred-grove"> </div>
   	</a>
   <% else %>
-  	<%= link_to groves_path do %>
+  	<%= link_to groves_path, :title => "enter the Sacred Grove" do %>
   		<div id = "sacred-grove"> </div>
   	<% end %>
   <% end %>
@@ -50,7 +50,7 @@
   	<div id = "savage-mts"> </div>
   	</a>
   <% else %>
-  	<%= link_to savage_mts_path do %>
+  	<%= link_to savage_mts_path, :title => "enter the Savage Mountains" do %>
   		<div id = "savage-mts"> </div>
   	<% end %>
   <% end %>
@@ -60,7 +60,7 @@
   	<div id = "martyr-outpost"> </div>
   	</a>
   <% else %>
-  	<%= link_to '#' do %>
+  	<%= link_to '#', :title => "enter Matyr's Outpost" do %>
   		<div id = "martyr-outpost"> </div>
   	<% end %>
   <% end %>
@@ -70,7 +70,7 @@
     <div id = "inner-sea"> </div>
     </a>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to '#', :title => "enter the Inner Sea" do %>
       <div id = "inner-sea"> </div>
     <% end %>
   <% end %>
@@ -80,7 +80,7 @@
     <div id = "twin-docks"> </div>
     </a>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to '#', :title => "enter Twin Docks" do %>
       <div id = "twin-docks"> </div>
     <% end %>
   <% end %>
@@ -90,7 +90,7 @@
     <div id = "exped-site"> </div>
     </a>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to '#', :title => "enter the Expedition Site" do %>
       <div id = "exped-site"> </div>
     <% end %>
   <% end %>
@@ -100,7 +100,7 @@
     <div id = "pirate-cove"> </div>
     </a>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to '#', :title => "enter the Pirate Cove" do %>
       <div id = "pirate-cove"> </div>
     <% end %>
   <% end %>  
@@ -110,7 +110,7 @@
     <div id = "triangle-isle"> </div>
     </a>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to '#', :title => "enter the Triangle Isles" do %>
       <div id = "triangle-isle"> </div>
     <% end %>
   <% end %>  
