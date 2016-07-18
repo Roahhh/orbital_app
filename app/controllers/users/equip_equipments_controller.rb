@@ -7,9 +7,9 @@ class Users::EquipEquipmentsController < ApplicationController
       @body_pt = @equipment.body_pt == "Weapon" ? "wpn" : @equipment.body_pt.to_s.downcase 
 
       if @equipment.lvl > @user.lvl
-      	flash[:danger] = "User's level is not high enough to equip this equipment!"
+      	flash[:danger] = "Your level is not high enough to equip this equipment!"
       elsif @equipment.class_restriction != nil && @equipment.class_restriction.to_i != @user.job_id.to_i
-      	flash[:danger] = "User is not of the correct class to use this equipment!"
+      	flash[:danger] = "You are not of the correct class to use this equipment!"
       else
       	#Unequip item if there's an equipment. 
       	if @user["eqp_" + @body_pt] != nil

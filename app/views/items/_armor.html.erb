@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    
+    <% @armors.each_with_index do |equip, index| %>
+        <% itemassign = ItemAssignment.find_by(item_id: equip.id, user_id: current_user.id) %>
+        <tr>
+            <td><%= index +=1 %></td>
+            <td><span title="<%= equip.description %>" ><%= equip.name %></span></td>
+            <td>
+                <% if equip.id.to_i == current_user.eqp_body.to_i %>
+                    <%= link_to 'Unequip', unequip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% elsif equip.lvl > current_user.lvl || (equip.class_restriction != nil && equip.class_restriction.to_i != current_user.job_id.to_i) %>
+                    <%= link_to 'Equip', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                <% else %>
+                    <%= link_to 'Equip', equip_equipment_path(id: current_user.id, equipment: equip.id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
