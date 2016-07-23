@@ -6,7 +6,7 @@ class ConvomessagesController < ApplicationController
     @convomessage = @conversation.convomessages.build(convomessage_params)
     @convomessage.user_id = current_user.id
     @convomessage.save!
-    PrivatePub.publish_to("/conversations/#{@conversati...}/new", "alert('#{@message.body}');")
+
     @path = conversation_path(@conversation)
   end
 
