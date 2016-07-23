@@ -11,13 +11,13 @@ class Users::UseHealItemsController < ApplicationController
       else 
 
         if @user.curr_hp + @item.rec_hp > @user.total_stat('hp') 
-          @user.curr_hp = @user.hp
+          @user.curr_hp = @user.total_stat('hp')
         else 
           @user.curr_hp += @item.rec_hp
         end
 
         if @user.curr_mp + @item.rec_mp > @user.total_stat('mp')
-          @user.curr_mp = @user.mp
+          @user.curr_mp = @user.total_stat('mp')
         else
           @user.curr_mp += @item.rec_mp
         end

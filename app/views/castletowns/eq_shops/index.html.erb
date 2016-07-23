@@ -36,20 +36,21 @@ You currently have <%= current_user.gold_pts %> gold.
     			<% end %>
     			<%= @quantity %>
     		</td>
+            <td>
     		<%= form_tag itemassignments_path(item_id: item.id, user_id: current_user.id, cost: item.cost, location: @location) do |f| %>
     	
-    			<td><span title="
+    			<span title="
     			     <% if @shoplvl < item.lvl %>
     			     <%='Can only be bought if shop is higher than level ' + item.lvl.to_s %>
     			     <% else %>
     			     <% end %>"
                     >
     			<%= number_field_tag 'quantity', 0, { min: 0, max: (1 - @quantity), disabled: @shoplvl < item.lvl } %>
-    			</span></td>
+    			</span>
 
-    			<td><%= submit_tag "Buy item" %></td>
+    			<%= submit_tag "Buy item" %>
     		<% end %>
-
+            </td>
 		</tr>
 	<% end %>
 </table>

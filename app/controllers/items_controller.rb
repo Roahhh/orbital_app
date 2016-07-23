@@ -7,6 +7,6 @@ class ItemsController < ApplicationController
 		@heads = current_user.items.where(body_pt: "Head")
 		@armors = current_user.items.where(body_pt: "Body")
 		@boots = current_user.items.where(body_pt: "Boots")
-
+		@warningmsg = ''
 	end
 end

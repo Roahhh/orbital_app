@@ -1,0 +1,20 @@
+<% @items.each_with_index do |item| %>
+    <% itemassign = ItemAssignment.find_by(item_id: item.id, user_id: current_user.id) %>
+        <% @warningmsg = item.rec_hp > 0 && current_user.curr_hp == current_user.total_stat('hp') ? 
+                         'Your HP is full! Are you sure you want to use ' + item.name + '?' : 
+                         item.rec_mp > 0 && current_user.curr_mp == current_user.total_stat('mp') ? 
+                         'Your MP is full! Are you sure you want to use ' + item.name + '?' : '' %>
+        <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" 
+         data-content="<%= item.description %> 
+                       <br>
+                       <% if item.rec_hp > 0 || item.rec_mp > 0 %>
+                            <a href='<%= use_heal_item_path(id: current_user.id, item_id: item.id)%>' class='btn btn-warning btn-xs' 
+                            data-confirm='<%= @warningmsg %>'>
+                                Use Item
+                            </a>                                    
+                        <% end %>" >
+            <%= item.name %>
+            x<%= itemassign.quantity %>
+        </a>
+        <% @warningmsg ='' %>                
+<% end %>
