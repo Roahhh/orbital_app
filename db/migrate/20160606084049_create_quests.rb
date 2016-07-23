@@ -10,8 +10,5 @@ class CreateQuests < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-  add_index :quests, [:user_id, :created_at]
-  add_index :quests, [:creator_id, :created_at]
-
   end
 end
