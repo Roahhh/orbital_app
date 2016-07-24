@@ -197,7 +197,7 @@ ActiveRecord::Schema.define(version: 20160724065914) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 54
+    t.integer  "luck",            default: 94
     t.integer  "sp",              default: 3
     t.integer  "hp_job",          default: 0
     t.integer  "mp_job",          default: 0
