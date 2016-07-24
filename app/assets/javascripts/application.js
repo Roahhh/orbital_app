@@ -16,5 +16,23 @@
 //= require chat
 //= require private_pub
 //= require turbolinks
-//= require_tree .
 //= require effective_form_inputs
+//= require_tree .
+var ready;
+ready = function() {
+
+  $("body").tooltip({   
+    selector: "[data-toggle='tooltip']",
+    container: "body"
+  })
+    //Popover, activated by clicking
+    .popover({
+    selector: "[data-toggle='popover']",
+    container: "body",
+    html: true
+  });
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

@@ -1,9 +1,10 @@
-<div class="progress">
+<div class="progress" id="expoint">
   <span>
-     <font color ="black"><strong> <%= "Level: " + @user.lvl.to_s %> </strong>  - 
-     <%= exp_percent(@user).round(2).to_s + "%" + " ( " + exp_to_lvl(@user).round(2).to_s %> <em> more exp to level</em> ) </font>
+     <font color ="white"> 
+     <%= exp_percent(@user).round(2).to_s + "%" + " ( " + exp_to_lvl(@user).round(2).to_s %> <em> more exp to level</em> ) 
+     </font>
   </span>
-  <div class="progress-bar" role="progressbar" aria-valuenow=  <%= exp_percent(@user).round(2).to_s %>
+  <div class="progress-bar" id="expoint-bar" role="progressbar" aria-valuenow=  <%= exp_percent(@user).round(2).to_s %>
   aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + exp_percent(@user).to_s + "%"%>>
   </div>
 </div>

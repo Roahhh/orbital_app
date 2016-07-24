@@ -1,11 +1,20 @@
 <% provide(:title, 'Tavern') %>
 
-<h1>All users</h1>
+<h1>Tavern</h1>
 
-<%= will_paginate @users %>
+<p>
+From the outside it looks intimate, well maintained and cheerful. Plastered walls and thick, hardwooden logs make up most of the building's outer structure.
+It's near impossible to see through the closed windows, but the cheerful sounds from within can be felt outside.
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+As you enter the tavern through the huge, hardwooden door, you're welcomed by amazing, but unknown scents and the smile of a waitress.
+The bartender is quite busy, but still manages to welcome you with a wave.
 
-<%= will_paginate @users %>
+It's as lovely inside as it is on the outside. Hardwooden beams support the upper floor and the lanterns attached to them. The walls are littered with all sorts of memorabilia, though whether they're collected or donated is uncertain..
+
+The tavern itself is packed. Soldiers seem to be the primary clientele here, which is often a good sign. Several long tables are occupied by seperate groups of people, all enjoying themselves, but they keep to themselves. The other, smaller tables are also occupied by people who clearly enjoy each other's company, though they seem to be strangers who have met here. Even most of the stools at the bar are occupied, though nobody seems to mind more company.
+
+You did hear rumors about this tavern, supposedly it's famous for something, but you can't remember what for. Though judging by the smells of grilled and cooked food coming from the kitchen, it must be the food. You manage to find a seat and prepare for what will undoubtedbly be a great evening.
+</p>
+<li><%= link_to "View All Messages", messages_path %></li>
+<li><%= link_to "Leave A Message", new_message_path %></li>
+<li><%= link_to "Chat with Other Users", users_path %></li>
