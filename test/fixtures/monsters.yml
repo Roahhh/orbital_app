@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  attack: 1
+  max_hp: 1
+  cur_hp: 1
+  r_points: 1
+  description: MyString
+
+two:
+  name: MyString
+  attack: 1
+  max_hp: 1
+  cur_hp: 1
+  r_points: 1
+  description: MyString

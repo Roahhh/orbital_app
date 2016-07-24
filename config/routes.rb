@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get 'students/new'
 
-  get 'fights' => 'fights#index'
+  get 'combat' => 'fights#combat'
+
+  get 'death' => 'fights#death'
+
+  get 'drops' => 'fights#drops'
 
   root 'static_pages#home'
   get 'about' => 'static_pages#about'
@@ -17,6 +21,8 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  resources :fights
 
   resources :users
 

@@ -1,2 +1,27 @@
 <% provide(:title, 'Encounter') %>
 
+<p>
+<h2>
+You've encountered <%= @monster.name %>!
+</h2>
+</p>
+
+<br/>
+
+<p> 
+<CENTER>
+<strong> 
+"<%= @monster.description %> "
+</strong>
+</CENTER>
+</p>
+
+
+<div class = "container">
+<CENTER>
+
+<%= link_to "Attack",  combat_path, class: "btn btn-danger"  %>
+
+<%= link_to "Run Away", starts_path, class: "btn btn-warning" %>
+</CENTER>
+</div>

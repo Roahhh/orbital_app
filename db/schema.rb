@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701072745) do
+ActiveRecord::Schema.define(version: 20160724065914) do
 
   create_table "bugcomments", force: :cascade do |t|
     t.text     "content"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20160701072745) do
   add_index "convomessages", ["conversation_id"], name: "index_convomessages_on_conversation_id"
   add_index "convomessages", ["user_id"], name: "index_convomessages_on_user_id"
 
+  create_table "item_assignments", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "shop"
     t.string   "name"
@@ -82,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160701072745) do
     t.datetime "updated_at",                    null: false
     t.integer  "cost"
     t.string   "class_restriction"
+    t.string   "body_pt"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -101,6 +110,18 @@ ActiveRecord::Schema.define(version: 20160701072745) do
     t.datetime "updated_at",  null: false
     t.string   "name"
     t.string   "description"
+  end
+
+  create_table "monsters", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "attack"
+    t.integer  "max_hp"
+    t.integer  "cur_hp"
+    t.integer  "r_points"
+    t.string   "description"
+    t.integer  "gold"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "quest_assignments", force: :cascade do |t|
@@ -155,7 +176,7 @@ ActiveRecord::Schema.define(version: 20160701072745) do
     t.integer  "agi",             default: 10
     t.integer  "vit",             default: 10
     t.integer  "int",             default: 10
-    t.integer  "luck",            default: 10
+    t.integer  "luck",            default: 68
     t.integer  "sp",              default: 3
     t.integer  "curr_hp",         default: 100
     t.integer  "curr_mp",         default: 30

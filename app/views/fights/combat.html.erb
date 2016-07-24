@@ -1,0 +1,82 @@
+<% provide(:title, 'Combat') %>
+
+
+<CENTER>
+<p>
+<h3>
+You have dealt <font color = "green"><%= @user_dmg %></font> damage to <%= @monster.name %>
+</h3>
+</p>
+
+
+<p>
+<h3>
+<%= @monster.name %> has dealt <font color = "red"><%= @monster_dmg %>.0</font> damage to you
+</h3>
+</p>
+
+</CENTER>
+
+
+
+
+
+<p>
+Your hp: <%= @user.curr_hp %>   mob hp: <%= @monster.cur_hp %>
+</p>
+
+<% if @user.curr_hp > 0 && @monster.cur_hp > 0 %>
+
+<div class = "container">
+<CENTER>
+
+<%= link_to "Attack",  combat_path, class: "btn btn-danger"  %>
+
+<%= link_to "Run Away", starts_path, class: "btn btn-warning" %>
+</CENTER>
+</div>
+
+<% end %>
+
+<% if @user.curr_hp <= 0 %>
+
+
+<CENTER><p><h2>
+
+You were <font color = "red">KILLED</font> by <%= @monster.name %>
+
+</h2></p></CENTER>
+
+<div class = "container">
+<CENTER>
+
+<%= link_to "Revive",  death_path, class: "btn btn-info"  %>
+
+</CENTER>
+</div>
+
+<% end %>
+
+<% if @user.curr_hp > 0 && @monster.cur_hp <= 0 %>
+
+<CENTER><p><h2>
+
+"You have <font color = "green">DEFEATED</font> <%= @monster.name %>"
+
+</h2></p>
+
+<p>
+<%= @monster.name %> has dropped <%= @monster.gold %> gold and <%= @monster.r_points %> resource points
+</p>
+</CENTER>
+
+<div class = "container">
+<CENTER>
+
+<%= link_to "Return",  drops_path, class: "btn btn-success"  %>
+
+</CENTER>
+</div>
+
+
+<% end %>
