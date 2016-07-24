@@ -1,0 +1,9 @@
+<div class="progress" id="healthpoint">
+  <span>
+     <font color ="white"><strong> <%= @monster.cur_hp.to_s %> </strong>  /  
+     <%= @monster.max_hp.to_s %></p></font>
+  </span>
+  <div class="progress-bar" id="healthpoint-bar" role="healthpointbar" aria-valuenow=  <%= ((@monster.cur_hp.to_f / @monster.max_hp.to_f)*100).round(2).to_s %>
+  aria-valuemin="0" aria-valuemax="100" style= <%= "width:" + ((@monster.cur_hp.to_f / @monster.max_hp.to_f)*100).to_s + "%"%>>
+  </div>
+</div>

@@ -11,5 +11,5 @@ class Mob < ActiveRecord::Base
  
       t.timestamps
     end
-
+  end
 end
