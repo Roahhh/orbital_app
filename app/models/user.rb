@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
 
   has_many :quest_assignments, dependent: :destroy
   has_many :quests, :through => :quest_assignments
+
+
+  has_many :item_assignments, dependent: :destroy
+  has_many :items, :through => :item_assignments
+  has_one :jobclass
   
   has_many :conversations, :foreign_key => :sender_id, dependent: :destroy
 	attr_accessor :remember_token
@@ -29,7 +34,6 @@ class User < ActiveRecord::Base
 	           uniqueness: { case_sensitive: false }
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :sp, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
-  validates :job, inclusion: { in: %w(Apprentice Warrior Mage Thief Monk Magic_Knight Berserker), message: "%{value} is not a job class" }
 
 	has_secure_password
 
@@ -91,21 +95,15 @@ class User < ActiveRecord::Base
   end
 
   def att_value
-    if self.job == "Apprentice"
-      return self.str * 1.5
-    elsif self.job == "Warrior"
-      return self.total_stat("str") * 2.5 + self.total_stat("agi") * 0.5
-    elsif self.job == "Mage"
-      return self.total_stat("int") * 2.8 + self.total_stat("luck") * 0.2
-    elsif self.job == "Thief"
-      return self.total_stat("agi") * 2.5 + self.total_stat("vit") * 0.5
-    elsif self.job == "Monk"
-      return self.total_stat("str") * 1.5 + self.total_stat("vit") * 1.5
-    elsif self.job == "Magic_Knight"
-      return self.total_stat("str") * 2 + self.total_stat("int") * 2
-    elsif self.job == "Berserker"
-      return self.total_stat("int") + self.total_stat("vit") * 3
-    end
+    job = Job.find(self.job_id)
+    
+    return self.total_stat("hp") * job.hp + 
+           self.total_stat("mp") * job.mp + 
+           self.total_stat("vit") * job.vit + 
+           self.total_stat("int") * job.int + 
+           self.total_stat("agi") * job.agi + 
+           self.total_stat("str") * job.str +
+           self.luck * job.luck
   end
 
   #Since HP and MP are dependant on Vit and Int respective, individual methods are used to calculate the total HP and MP at every increase
@@ -135,10 +133,33 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def minus_vit(amt, loc)
+    if loc == ""
+      self.vit -= amt
+      self.hp = self.vit * 10
+    elsif loc == "job" || loc == "eqp"
+      self["vit_" + loc] -= amt
+      self["hp_" + loc] = self["vit_" + loc] * 10
+    end
+
+    self.save
+  end
+
+  def minus_int(amt, loc)
+    if loc == ""
+      self.int -= amt
+      self.mp = self.int * 3
+    elsif loc == "job" || loc == "eqp"
+      self["int_" + loc] -= amt
+      self["mp_" + loc] = self["int_" + loc] * 3
+    end
+
+    self.save
+  end
+
 # This method is specific for users to add their sp
   def add_stat(stat)
     if self.sp <= 0
-
     else
       if stat == "vit"
         add_vit(1, "")
@@ -165,25 +186,15 @@ class User < ActiveRecord::Base
   end
 
   def bonus_lvlup
-    if self.job == "Warrior"
-      self.str_job += 2
-      self.agi_job += 1
-    elsif self.job == "Mage"
-      self.add_int(3, "job")
-    elsif self.job == "Thief"
-      self.agi_job += 2
-      self.add_vit(1, "job")
-    elsif self.job == "Monk"
-      self.str_job += 2
-      self.add_vit(1, "job") 
-    elsif self.job == "Magic_Knight"
-      self.str += 3
-      self.add_int(3, "job")
-    elsif self.job == "Berserker"
-      self.add_vit(4, "job")
-      self.int += 2
-    else
-    end 
+    job = Job.find(self.job_id)
+
+    self.str_job += job.str_bonus
+    self.agi_job += job.agi_bonus
+    self.add_vit(job.vit_bonus, "job")
+    self.add_int(job.int_bonus, "job")
+    self.hp_job += job.hp_bonus
+    self.mp_job += job.mp_bonus
+    
     self.save
   end
 
@@ -201,8 +212,8 @@ class User < ActiveRecord::Base
 
     self.bonus_lvlup
 
-    self.curr_hp = self.hp + self.hp_job + self.hp_eqp
-    self.curr_mp = self.mp + self.mp_job + self.mp_eqp
+    self.curr_hp = self.total_stat("hp")
+    self.curr_mp = self.total_stat("mp")
     
     self.save
   end
@@ -217,8 +228,79 @@ class User < ActiveRecord::Base
       self.add_exp(exp - to_lvl_exp)
     end
   end
+# ---------- Equipping related methods -----------
+  def equip(equipment)
+    if equipment.shop != "Equipment"
+      flash[:danger] = "Item is not an Equipment!"
+    end
 
-# ---------------------------------------------------------------------------------------------------
+    if equipment.body_pt == "Head"
+      self.eqp_head = equipment.id
+    elsif equipment.body_pt == "Body"
+      self.eqp_body = equipment.id
+    elsif equipment.body_pt == "Boots"
+      self.eqp_boots = equipment.id
+    elsif equipment.body_pt == "Weapon"
+      self.eqp_wpn = equipment.id
+    else
+      flash[:danger] = "Error equipping equipment. Please report this to the administrators. Thank you!"
+    end
+
+
+    self.str_eqp += equipment.str.to_i
+    self.agi_eqp += equipment.agi.to_i
+    self.add_vit(equipment.vit.to_i, "eqp")
+    self.add_int(equipment.int.to_i, "eqp")
+    self.hp_eqp += equipment.hp.to_i
+    self.mp_eqp += equipment.mp.to_i
+    self.save
+  end
+
+  def unequip(equipment)
+    if equipment.shop != "Equipment"
+      flash[:danger] = "Item is not an Equipment!"
+    end
+
+    if equipment.body_pt == "Head"
+      self.eqp_head = nil
+    elsif equipment.body_pt == "Body"
+      self.eqp_body = nil
+    elsif equipment.body_pt == "Boots"
+      self.eqp_boots = nil
+    elsif equipment.body_pt == "Weapon"
+      self.eqp_wpn = nil
+    else
+      flash[:danger] = "Error equipping equipment. Please report this to the administrators. Thank you!"
+    end
+
+    self.str_eqp -= equipment.str.to_i
+    self.agi_eqp -= equipment.agi.to_i
+    self.minus_vit(equipment.vit.to_i, "eqp")
+    self.minus_int(equipment.int.to_i, "eqp")
+    self.hp_eqp -= equipment.hp.to_i
+    self.mp_eqp -= equipment.mp.to_i
+    self.save
+  end
+# ---------- Job Change methods -----------
+  def changejob(job_id)
+    job = Job.find(job_id)
+    level = self.lvl - 1
+
+    self.job_id = job_id
+    self.str_job = job.str_bonus * level
+    self.agi_job = job.agi_bonus * level
+    self.hp_job = job.hp_bonus * level
+    self.mp_job = job.mp_bonus * level
+    self.vit_job = 0
+    self.int_job = 0
+    self.save
+
+    self.add_vit(job.vit_bonus * level, "job")
+    self.add_int(job.int_bonus * level, "job")
+    self.curr_hp = self.total_stat("hp")
+    self.curr_mp = self.total_stat("mp")
+    self.save
+  end
 # -------- methods for rolling luck for wishing well --------------------------------------
   def roll_luck
     self.luck = rand(100)
@@ -226,3 +308,4 @@ class User < ActiveRecord::Base
     self.save
   end  
 end
+# ---------------------------------------------------------------------------------------------------

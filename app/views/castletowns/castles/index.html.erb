@@ -1,0 +1,76 @@
+<% provide(:title, 'Castle') %>
+
+<h1><%= @clan %>'s Castle</h1>
+
+<p>
+As you head towards the throne room, you hear a strange voice calling out for you.
+'Dear Adventurer from the clan of <%= @clan %>. Does thy wish to change thy's profession?'
+</p>
+
+<table>
+	<tr>
+		<th>#</th>
+		<th>Job Name</th>
+		<th></th>
+    </tr>
+    
+    <% @jobs.each_with_index do |job| %>
+    	<tr>
+    		<td><%= @index +=1 %></td>
+    		<td><span title="<%= job.description %>" ><%= job.name %></span></td>
+    		<td>
+    			<% if current_user.job_id.to_i == job.id.to_i %>
+    			<% elsif current_user.lvl.to_i < job.lvl.to_i || @town.castle_lvl < job.castle_lvl %>
+    				<span title="Requirements to unlock this class:
+    				Level: <%= job.lvl %>
+    				Castle Level: <%= job.castle_lvl %>".html_safe>
+    					<%= link_to 'Change Job', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+    				</span>
+    			<% else %>
+    				<%= link_to 'Change Job', change_job_path(:id => current_user.id, :job_id => job.id), method: :patch, class: "btn btn-warning btn-xs" %>
+    			<% end %>
+    		</td>
+		</tr>
+	<% end %>
+
+    <!-- Hidden Classes -->
+    <% if current_user.int > 35 && current_user.str > 35 && current_user.lvl > 10 %>
+        <tr>
+            <% @currenthiddenjob = @hiddenjobs.find_by(name: "Magic_Knight") %>
+            <td><%= @index += 1 %></td>
+            <td><span title="<%= @currenthiddenjob.description %>" ><%= @currenthiddenjob.name.titleize %></span></td>
+            <td>
+                <% if current_user.job_id.to_i == @currenthiddenjob.id.to_i %>
+                <% elsif current_user.lvl.to_i < @currenthiddenjob.lvl.to_i || @town.castle_lvl < @currenthiddenjob.castle_lvl %>
+                    <span title="Requirements to unlock this class:
+                    Level: <%= @currenthiddenjob.lvl %>
+                    Castle Level: <%= @currenthiddenjob.castle_lvl %>".html_safe>
+                        <%= link_to 'Change Job', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                    </span>
+                <% else %>
+                    <%= link_to 'Change Job', change_job_path(:id => current_user.id, :job_id => @hiddenjobs.find_by(name: "Magic_Knight").id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+	   </tr>
+    <% end %>
+
+    <% if current_user.vit > 50 && current_user.lvl > 10 %>
+        <tr>
+            <% @currenthiddenjob = @hiddenjobs.find_by(name: "Berserker") %>
+            <td><%= @index += 1 %></td>
+            <td><span title="<%= @currenthiddenjob.description %>" ><%= @currenthiddenjob.name.titleize %></span></td>
+            <td>
+                <% if current_user.job_id.to_i == @currenthiddenjob.id.to_i %>
+                <% elsif current_user.lvl.to_i < @currenthiddenjob.lvl.to_i || @town.castle_lvl < @currenthiddenjob.castle_lvl %>
+                    <span title="Requirements to unlock this class:
+                    Level: <%= @currenthiddenjob.lvl %>
+                    Castle Level: <%= @currenthiddenjob.castle_lvl %>".html_safe>
+                        <%= link_to 'Change Job', '#', disabled: true, class: "btn btn-warning btn-xs" %>
+                    </span>
+                <% else %>
+                    <%= link_to 'Change Job', change_job_path(:id => current_user.id, :job_id => @hiddenjobs.find_by(name: "Berserker").id), method: :patch, class: "btn btn-warning btn-xs" %>
+                <% end %>
+            </td>
+       </tr>
+    <% end %>
+</table>

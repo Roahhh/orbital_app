@@ -1,6 +1,54 @@
 <% provide(:title, 'Item Shop') %>
 
+<h1><%= @clan %>'s Item Shop</h1>
 <p>
 Various concoctions of ominous and fluorescent colors are scattered across the heavily laden shelves.
 The glowing vials of crimson and cyan radiate an aura of might that permeates the air around you. You question the safety of ingesting such dubious liquids.
 </p>
+<br>
+<p>
+You currently have <%= current_user.gold_pts %> gold.
+</p>
+<br>
+<table>
+	<tr>
+		<th>#</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Inventory</th>
+		<th>Purchase</th>
+		<th></th>
+    </tr>
+    
+    <% @items.each_with_index do |item, index| %>
+    	<tr>
+    		<td><%= index +=1 %></td>
+    		<td><span title="<%= item.description %>" ><%= item.name %></span></td>
+    		<td><%= item.cost %></td>
+    		<td>
+    			<% if ItemAssignment.find_by(item_id: item.id, user_id: current_user.id) == nil %>
+    			<% else %>
+    				<% @quantity = ItemAssignment.find_by(item_id: item.id, user_id: current_user.id).quantity.to_i %>
+    			<% end %>
+    			<%= @quantity %>
+                <% @quantity = 0 %>
+    		</td>
+    		<td>
+            <%= form_tag itemassignments_path(item_id: item.id, user_id: current_user.id, cost: item.cost, location: @location) do |f| %>
+    	
+    			<span title="
+    			     <% if @shoplvl < item.lvl %>
+    			     <%='Can only be bought if shop is higher than level ' + item.lvl.to_s %>
+    			     <% else %>
+    			     <% end %>"
+                    >
+    			<%= number_field_tag 'quantity', 0, { min: 0, max: (99 - @quantity), disabled: @shoplvl < item.lvl } %>
+    			</span>
+
+    			<%= submit_tag "Buy item" %>
+    		<% end %>
+            </td>
+
+		</tr>
+	<% end %>
+</table>

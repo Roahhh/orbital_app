@@ -1,7 +1,7 @@
 <div id="profiletable">
 <table border="2">
   <tr>
-    <td rowspan="4">
+    <td rowspan="6">
       <%= gravatar_for @user %>
     </td> 
     <th>Name:</th>
@@ -17,7 +17,7 @@
     </td>
     <th>Job:</th>
     <td>
-      <%= @user.job.titleize %>
+      <%= Job.find(@user.job_id).name.titleize %>
     </td>
   </tr>
 
@@ -32,7 +32,24 @@
     <%= render 'mpbar' %>
     </th>
   </tr>
-<br>
+
+  <tr>
+    <th colspan="4">Exp:<br>
+    <%= render 'expbar' %>
+    </th>
+  </tr>
+
+  <tr>
+    <th>Gold:</th>
+    <td>  
+      <%= @user.gold_pts.to_s %>
+    </td>
+    <th>Resource:</th>
+    <td>
+      <%= @user.resource_pts.to_s %>
+    </td>
+  </tr>
+  
   <tr>
     <th colspan="2">STATS</th>
     <th colspan="3">EQUIPMENT?</th>
@@ -48,6 +65,14 @@
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
+
+    <th>Weapon:</th>
+    <td colspan="2">
+      <% if @weapon == nil %>
+      <% else %>
+        <%= @weapon.name %>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
@@ -59,6 +84,14 @@
            <%= link_to '+', add_stat_path(:id => @user.id, :stat => "agi"), method: :patch, 
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
+    </td>
+
+    <th>Head:</th>
+    <td colspan="2">
+      <% if @head == nil %>
+      <% else %>
+        <%= @head.name %>
+      <% end %>
     </td>  
   </tr>
 
@@ -72,6 +105,14 @@
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
+
+    <th>Armor:</th>
+    <td colspan="2">
+      <% if @body == nil %>
+      <% else %>
+        <%= @body.name %>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
@@ -84,11 +125,23 @@
            class: "btn btn-warning btn-xs", disabled: (@user.sp <= 0) %></div>
        <% end %>
     </td>
+
+    <th>Boots:</th>
+    <td colspan="2">
+      <% if @boots == nil %>
+      <% else %>
+        <%= @boots.name %>
+      <% end %>
+    </td>
   </tr>
 
   <tr>
     <th>Luck:</th>
     <td><%= @user.luck.to_s %></td>
+    <th>Attack Value:</th>
+    <td colspan="2">
+        <%= @user.att_value %>
+    </td>
   </tr>
 
   <tr>

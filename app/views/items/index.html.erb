@@ -1,0 +1,56 @@
+<% provide(:title, 'Inventory') %>
+
+<h1><%= full_name(current_user) %>'s Inventory</h1>
+<br>
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#item" aria-controls="home" role="tab" data-toggle="tab">Items</a></li>
+    <li role="presentation"><a href="#weapon" aria-controls="profile" role="tab" data-toggle="tab">Weapons</a></li>
+    <li role="presentation"><a href="#armor" aria-controls="messages" role="tab" data-toggle="tab">Armor</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="item">
+        <% if @items.empty? %>
+            <h4>You have no items!</h4>
+        <% else %>
+            <%= render 'item' %>
+        <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="weapon">
+        <% if @weapons.empty? %>
+            <h4>You have no weapons!</h4>
+        <% else %>
+            <%= render 'weapon' %>
+        <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="armor">
+        <h3>Armor(Head):</h3>
+        <% if @heads.empty? %>
+            <h4>You have no headgear!</h4>
+        <% else %>
+            <%= render 'head' %>
+        <% end %>
+
+        <h3>Armor(Body):</h3>
+        <% if @armors.empty? %>
+            <h4>You have no body armor!</h4>
+        <% else %>
+            <%= render 'armor' %>
+        <% end %>
+
+        <h3>Armor(Boots):</h3>
+        <% if @boots.empty? %>
+            <h4>You have no boots!</h4>
+        <% else %>
+            <%= render 'boots' %>
+        <% end %>        
+    </div>
+  </div>
+
+</div>
+
